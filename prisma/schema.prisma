@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+/// -------------------
+/// Ingress events
+/// -------------------
+
+enum IngressSource {
+  POS
+  ERP
+}
+
+model IngressEvent {
+  id        String        @id @default(auto()) @map("_id") @db.ObjectId
+  source    IngressSource
+  payload   Json
+  createdAt DateTime      @default(now())
+
+  @@index([source, createdAt])
+  @@map("ingress_events")
+}

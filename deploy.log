@@ -1,16 +1,15 @@
 ==== DEPLOY DATA-MAPPER INIZIATO ==== 
-Data: Tue Nov 25 19:01:06 CET 2025
-Nuova versione: v1.0.1
+Data: Tue Nov 25 20:00:39 CET 2025
+Nuova versione: v1.0.2
 Build Docker...
 #0 building with "desktop-linux" instance using docker driver
 
 #1 [internal] load build definition from Dockerfile
-#1 transferring dockerfile:
 #1 transferring dockerfile: 1.26kB 0.0s done
-#1 DONE 0.1s
+#1 DONE 0.0s
 
 #2 [internal] load metadata for docker.io/library/node:20-alpine
-#2 DONE 5.8s
+#2 DONE 1.6s
 
 #3 [internal] load .dockerignore
 #3 transferring context: 194B done
@@ -21,105 +20,69 @@ Build Docker...
 #4 DONE 0.0s
 
 #5 [internal] load build context
-#5 transferring context: 271.36kB 0.0s done
+#5 transferring context: 10.62kB 0.0s done
 #5 DONE 0.0s
 
-#6 [builder 3/7] RUN apk add --no-cache libc6-compat
+#6 [builder 2/7] WORKDIR /app
 #6 CACHED
 
-#7 [builder 2/7] WORKDIR /app
+#7 [builder 3/7] RUN apk add --no-cache libc6-compat
 #7 CACHED
 
 #8 [builder 4/7] COPY package*.json ./
-#8 DONE 0.0s
+#8 CACHED
 
-#9 [runner 3/8] COPY package*.json ./
-#9 DONE 0.0s
+#9 [builder 5/7] RUN npm install
+#9 CACHED
 
-#10 [runner 4/8] RUN npm install --omit=dev
-#10 ...
+#10 [builder 6/7] COPY . .
+#10 DONE 0.1s
 
-#11 [builder 5/7] RUN npm install
-#11 32.33 
-#11 32.33 added 364 packages, and audited 365 packages in 31s
-#11 32.33 
-#11 32.33 145 packages are looking for funding
-#11 32.33   run `npm fund` for details
-#11 32.33 
-#11 32.33 found 0 vulnerabilities
-#11 32.35 npm notice
-#11 32.35 npm notice New major version of npm available! 10.8.2 -> 11.6.3
-#11 32.35 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.3
-#11 32.35 npm notice To update run: npm install -g npm@11.6.3
-#11 32.35 npm notice
-#11 DONE 33.7s
+#11 [builder 7/7] RUN npm run build
+#11 3.663 
+#11 3.663 > data-mapper@0.1.0 build
+#11 3.663 > next build
+#11 3.663 
+#11 10.26 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+#11 10.26 This information is used to shape Next.js' roadmap and prioritize features.
+#11 10.26 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+#11 10.26 https://nextjs.org/telemetry
+#11 10.26 
+#11 10.31    ▲ Next.js 16.0.3 (Turbopack)
+#11 10.31 
+#11 10.58    Creating an optimized production build ...
+#11 31.70  ✓ Compiled successfully in 19.8s
+#11 31.79    Running TypeScript ...
+#11 37.32    Collecting page data using 7 workers ...
+#11 38.43    Generating static pages using 7 workers (0/4) ...
+#11 39.61    Generating static pages using 7 workers (1/4) 
+#11 39.61    Generating static pages using 7 workers (2/4) 
+#11 39.62    Generating static pages using 7 workers (3/4) 
+#11 39.62  ✓ Generating static pages using 7 workers (4/4) in 1189.3ms
+#11 39.64    Finalizing page optimization ...
+#11 40.15 
+#11 40.15 Route (app)
+#11 40.15 ┌ ○ /
+#11 40.15 ├ ○ /_not-found
+#11 40.15 └ ƒ /api/health
+#11 40.15 
+#11 40.15 
+#11 40.15 ○  (Static)   prerendered as static content
+#11 40.15 ƒ  (Dynamic)  server-rendered on demand
+#11 40.15 
+#11 DONE 40.6s
 
-#10 [runner 4/8] RUN npm install --omit=dev
-#10 ...
+#12 [runner 3/8] COPY package*.json ./
+#12 CACHED
 
-#12 [builder 6/7] COPY . .
-#12 DONE 0.4s
-
-#10 [runner 4/8] RUN npm install --omit=dev
-#10 ...
-
-#13 [builder 7/7] RUN npm run build
-#13 0.866 
-#13 0.866 > data-mapper@0.1.0 build
-#13 0.866 > next build
-#13 0.866 
-#13 ...
-
-#10 [runner 4/8] RUN npm install --omit=dev
-#10 35.35 
-#10 35.35 added 25 packages, and audited 26 packages in 34s
-#10 35.35 
-#10 35.35 8 packages are looking for funding
-#10 35.35   run `npm fund` for details
-#10 35.35 
-#10 35.35 found 0 vulnerabilities
-#10 35.36 npm notice
-#10 35.36 npm notice New major version of npm available! 10.8.2 -> 11.6.3
-#10 35.36 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.3
-#10 35.36 npm notice To update run: npm install -g npm@11.6.3
-#10 35.36 npm notice
-#10 DONE 35.5s
-
-#13 [builder 7/7] RUN npm run build
-#13 2.537 Attention: Next.js now collects completely anonymous telemetry regarding usage.
-#13 2.538 This information is used to shape Next.js' roadmap and prioritize features.
-#13 2.538 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-#13 2.538 https://nextjs.org/telemetry
-#13 2.538 
-#13 2.558    ▲ Next.js 16.0.3 (Turbopack)
-#13 2.559 
-#13 2.690    Creating an optimized production build ...
-#13 23.47  ✓ Compiled successfully in 20.2s
-#13 23.61    Running TypeScript ...
-#13 28.76    Collecting page data using 7 workers ...
-#13 29.97    Generating static pages using 7 workers (0/4) ...
-#13 31.17    Generating static pages using 7 workers (1/4) 
-#13 31.18    Generating static pages using 7 workers (2/4) 
-#13 31.18    Generating static pages using 7 workers (3/4) 
-#13 31.18  ✓ Generating static pages using 7 workers (4/4) in 1206.4ms
-#13 31.20    Finalizing page optimization ...
-#13 31.87 
-#13 31.87 Route (app)
-#13 31.87 ┌ ○ /
-#13 31.87 ├ ○ /_not-found
-#13 31.87 └ ƒ /api/health
-#13 31.87 
-#13 31.87 
-#13 31.88 ○  (Static)   prerendered as static content
-#13 31.88 ƒ  (Dynamic)  server-rendered on demand
-#13 31.88 
-#13 DONE 32.2s
+#13 [runner 4/8] RUN npm install --omit=dev
+#13 CACHED
 
 #14 [runner 5/8] COPY --from=builder /app/.next/standalone ./
-#14 DONE 0.6s
+#14 DONE 0.9s
 
 #15 [runner 6/8] COPY --from=builder /app/.next/static ./.next/static
-#15 DONE 0.0s
+#15 DONE 0.1s
 
 #16 [runner 7/8] COPY --from=builder /app/public ./public
 #16 DONE 0.0s
@@ -129,43 +92,36 @@ Build Docker...
 
 #18 exporting to image
 #18 exporting layers
-#18 exporting layers 28.7s done
-#18 exporting manifest sha256:e4b283668d47056388b5443af6a7e95ac79eae92cf353b2b4673810f361c56bc 0.0s done
-#18 exporting config sha256:eae5e097d385e8864da7591047c528e5abf2d262b32d04b2b21ee06ac90b2623 done
-#18 exporting attestation manifest sha256:1a9946789edb7043fed335f112ac8d3c237b9f3d663674fd5c2635ddfc499da6 0.0s done
-#18 exporting manifest list sha256:94c80f5b1fdcc977f3e923bd37f07ee117e5213d6da90ea2e9be1b0f288bf1e3 done
-#18 naming to europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper:v1.0.1 0.0s done
-#18 DONE 29.0s
+#18 exporting layers 2.2s done
+#18 exporting manifest sha256:620ab224046afee5b7fed04761d85c5ebd7a79f719cdc74b51ea3248186450a7 0.0s done
+#18 exporting config sha256:6a884affad787efd106c7cdc49fd6cd954cb8f5289ccda63d49a440093d92c52 done
+#18 exporting attestation manifest sha256:fa778cd61b674ffec019ac68bb2673ba94b65116c9a4e79d4e941dde8a90f870 0.0s done
+#18 exporting manifest list sha256:a1bc8b1574d7cbae377e7edb861caa109f07593b30cc5e9ef5d9175c6c670636 done
+#18 naming to europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper:v1.0.2 done
+#18 DONE 2.3s
 
-View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/p4v3w3adyid45rnsorjl2i0dk
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/wyrouqm6vd6uzab8o17r2s52z
 Push immagine...
 The push refers to repository [europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper]
-e74e4ed823e9: Mounted from sdsanalyticsservice/frontend-repo/analytics-frontend
-2d35ebdb57d9: Mounted from sdsanalyticsservice/frontend-repo/analytics-frontend
-da04d522c98f: Mounted from sdsanalyticsservice/frontend-repo/analytics-frontend
-2b026bf6947c: Mounted from sdsanalyticsservice/frontend-repo/analytics-frontend
-60e45a9660cf: Mounted from sdsanalyticsservice/frontend-repo/analytics-frontend
-bf9fc3059977: Pushed
-3940418a20a2: Pushed
-41d06c257a2f: Pushed
-aa670f59658f: Pushed
-c6e9d84103b1: Pushed
-e62fd45609e0: Pushed
-cef6a59a7cd1: Pushed
-v1.0.1: digest: sha256:94c80f5b1fdcc977f3e923bd37f07ee117e5213d6da90ea2e9be1b0f288bf1e3 size: 856
-Old revision: 
+4e55d35442c7: Pushed
+1a27fff69dec: Pushed
+0ce2ce472b2e: Pushed
+00c70a3f3c69: Pushed
+2314b061924c: Pushed
+v1.0.2: digest: sha256:a1bc8b1574d7cbae377e7edb861caa109f07593b30cc5e9ef5d9175c6c670636 size: 856
+Old revision: data-mapper-00001-t9t
 Deploy Cloud Run...
 Deploying container to Cloud Run service [[1mdata-mapper[m] in project [[1msdsanalyticsservice[m] region [[1meurope-west1[m]
-Deploying new service...
-Setting IAM Policy...............done
-Creating Revision..................................................................................................................................................done
+Deploying...
+Setting IAM Policy..................done
+Creating Revision.......................................................................................................................................................................................................................................................................done
 Routing traffic.....done
 Done.
-Service [[1mdata-mapper[m] revision [[1mdata-mapper-00001-t9t[m] has been deployed and is serving [1m100[m percent of traffic.
+Service [[1mdata-mapper[m] revision [[1mdata-mapper-00002-h66[m] has been deployed and is serving [1m100[m percent of traffic.
 Service URL: [1mhttps://data-mapper-542854471096.europe-west1.run.app[m
 Health check...
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    15    0    15    0     0     13      0 --:--:--  0:00:01 --:--:--    13100    15    0    15    0     0     13      0 --:--:--  0:00:01 --:--:--    13
-{"status":"ok"}data-mapper deploy completato: init
-Fine deploy data-mapper v1.0.1
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    15    0    15    0     0     54      0 --:--:-- --:--:-- --:--:--    54
+{"status":"ok"}cluster-data-mapper deploy completato - add doc boilerplate (durata: 1m53s)
+Fine deploy data-mapper v1.0.2
