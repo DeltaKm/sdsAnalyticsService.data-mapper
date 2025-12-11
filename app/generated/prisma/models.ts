@@ -9,4 +9,8 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/IngressEvent'
+export type * from './models/StoreGroup'
+export type * from './models/StoreSubgroup'
+export type * from './models/Store'
+export type * from './models/Tenant'
 export type * from './commonInputTypes'

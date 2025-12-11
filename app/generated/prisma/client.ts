@@ -49,3 +49,23 @@ path.join(process.cwd(), "app/generated/prisma/libquery_engine-darwin-arm64.dyli
  * 
  */
 export type IngressEvent = Prisma.IngressEventModel
+/**
+ * Model StoreGroup
+ * 
+ */
+export type StoreGroup = Prisma.StoreGroupModel
+/**
+ * Model StoreSubgroup
+ * 
+ */
+export type StoreSubgroup = Prisma.StoreSubgroupModel
+/**
+ * Model Store
+ * 
+ */
+export type Store = Prisma.StoreModel
+/**
+ * Model Tenant
+ * 
+ */
+export type Tenant = Prisma.TenantModel

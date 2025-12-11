@@ -49,7 +49,11 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 
 
 export const ModelName = {
-  IngressEvent: 'IngressEvent'
+  IngressEvent: 'IngressEvent',
+  StoreGroup: 'StoreGroup',
+  StoreSubgroup: 'StoreSubgroup',
+  Store: 'Store',
+  Tenant: 'Tenant'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -66,6 +70,60 @@ export const IngressEventScalarFieldEnum = {
 } as const
 
 export type IngressEventScalarFieldEnum = (typeof IngressEventScalarFieldEnum)[keyof typeof IngressEventScalarFieldEnum]
+
+
+export const StoreGroupScalarFieldEnum = {
+  id: 'id',
+  groupId: 'groupId',
+  name: 'name',
+  supervisorId: 'supervisorId',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StoreGroupScalarFieldEnum = (typeof StoreGroupScalarFieldEnum)[keyof typeof StoreGroupScalarFieldEnum]
+
+
+export const StoreSubgroupScalarFieldEnum = {
+  id: 'id',
+  subgroupId: 'subgroupId',
+  groupId: 'groupId',
+  name: 'name',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StoreSubgroupScalarFieldEnum = (typeof StoreSubgroupScalarFieldEnum)[keyof typeof StoreSubgroupScalarFieldEnum]
+
+
+export const StoreScalarFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  tenantId: 'tenantId',
+  groupId: 'groupId',
+  subgroupId: 'subgroupId',
+  name: 'name',
+  status: 'status',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StoreScalarFieldEnum = (typeof StoreScalarFieldEnum)[keyof typeof StoreScalarFieldEnum]
+
+
+export const TenantScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  name: 'name',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TenantScalarFieldEnum = (typeof TenantScalarFieldEnum)[keyof typeof TenantScalarFieldEnum]
 
 
 export const SortOrder = {
