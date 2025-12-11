@@ -18,6 +18,7 @@ RUN npm install
 COPY . .
 
 # Build in modalità standalone
+RUN npx prisma generate
 RUN npm run build
 
 

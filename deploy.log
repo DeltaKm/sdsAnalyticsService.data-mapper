@@ -1,83 +1,87 @@
 ==== DEPLOY DATA-MAPPER INIZIATO ==== 
-Data: Sat Nov 29 14:35:15 CET 2025
-Nuova versione: v1.1.0
+Data: Thu Dec 11 05:22:43 CET 2025
+Nuova versione: v1.2.0
 Cloud Build: build & push immagine...
-Creating temporary archive of 41 file(s) totalling 18.8 MiB before compression.
+Creating temporary archive of 53 file(s) totalling 19.1 MiB before compression.
 Some files were not included in the source upload.
 
-Check the gcloud log [/Users/claudiomartinez/.config/gcloud/logs/2025.11.29/14.35.17.354495.log] to see which files and the contents of the
+Check the gcloud log [/Users/claudiomartinez/.config/gcloud/logs/2025.12.11/05.22.43.941880.log] to see which files and the contents of the
 default gcloudignore file used (see `$ gcloud topic gcloudignore` to learn
 more).
 
-Uploading tarball of [.] to [gs://sdsanalyticsservice_cloudbuild/source/1764423317.809225-de1a8f05596348579db56e50d7ca302d.tgz]
-Created [https://cloudbuild.googleapis.com/v1/projects/sdsanalyticsservice/locations/global/builds/d62e22c2-a798-45b9-9005-5df2a4bc622b].
-Logs are available at [ https://console.cloud.google.com/cloud-build/builds/d62e22c2-a798-45b9-9005-5df2a4bc622b?project=542854471096 ].
+Uploading tarball of [.] to [gs://sdsanalyticsservice_cloudbuild/source/1765426964.057681-0c2be4ff42334b4baec59cdab70e335f.tgz]
+Created [https://cloudbuild.googleapis.com/v1/projects/sdsanalyticsservice/locations/global/builds/8a01642a-f5f5-4e0a-8119-7be29ab17e85].
+Logs are available at [ https://console.cloud.google.com/cloud-build/builds/8a01642a-f5f5-4e0a-8119-7be29ab17e85?project=542854471096 ].
 Waiting for build to complete. Polling interval: 1 second(s).
------------------------------------------------- REMOTE BUILD OUTPUT ------------------------------------------------
-starting build "d62e22c2-a798-45b9-9005-5df2a4bc622b"
+---------------------------------- REMOTE BUILD OUTPUT ----------------------------------
+starting build "8a01642a-f5f5-4e0a-8119-7be29ab17e85"
 
 FETCHSOURCE
-Fetching storage object: gs://sdsanalyticsservice_cloudbuild/source/1764423317.809225-de1a8f05596348579db56e50d7ca302d.tgz#1764423332992965
-Copying gs://sdsanalyticsservice_cloudbuild/source/1764423317.809225-de1a8f05596348579db56e50d7ca302d.tgz#1764423332992965...
+Fetching storage object: gs://sdsanalyticsservice_cloudbuild/source/1765426964.057681-0c2be4ff42334b4baec59cdab70e335f.tgz#1765426968981208
+Copying gs://sdsanalyticsservice_cloudbuild/source/1765426964.057681-0c2be4ff42334b4baec59cdab70e335f.tgz#1765426968981208...
 / [0 files][    0.0 B/  9.0 MiB]                                                / [1 files][  9.0 MiB/  9.0 MiB]                                                
 Operation completed over 1 objects/9.0 MiB.
 BUILD
 Starting Step #0
 Step #0: Already have image (with digest): gcr.io/cloud-builders/docker
-Step #0: Sending build context to Docker daemon  19.77MB
+Step #0: Sending build context to Docker daemon  20.05MB
 Step #0: Step 1/20 : FROM node:20-alpine AS builder
 Step #0: 20-alpine: Pulling from library/node
-Step #0: 2d35ebdb57d9: Already exists
-Step #0: 537c6f956080: Pulling fs layer
-Step #0: d31fb19c9d76: Pulling fs layer
-Step #0: d4cda882e05a: Pulling fs layer
-Step #0: d31fb19c9d76: Verifying Checksum
-Step #0: d31fb19c9d76: Download complete
-Step #0: d4cda882e05a: Verifying Checksum
-Step #0: d4cda882e05a: Download complete
-Step #0: 537c6f956080: Download complete
-Step #0: 537c6f956080: Pull complete
-Step #0: d31fb19c9d76: Pull complete
-Step #0: d4cda882e05a: Pull complete
-Step #0: Digest: sha256:16858294071a56ffd4cce9f17b57136cc39e41507b40e245b4f8e906f7a19463
+Step #0: 014e56e61396: Already exists
+Step #0: d28ab52fe429: Pulling fs layer
+Step #0: 34226f541496: Pulling fs layer
+Step #0: 6ac8cc1f0b52: Pulling fs layer
+Step #0: 6ac8cc1f0b52: Verifying Checksum
+Step #0: 6ac8cc1f0b52: Download complete
+Step #0: 34226f541496: Verifying Checksum
+Step #0: 34226f541496: Download complete
+Step #0: d28ab52fe429: Verifying Checksum
+Step #0: d28ab52fe429: Download complete
+Step #0: d28ab52fe429: Pull complete
+Step #0: 34226f541496: Pull complete
+Step #0: 6ac8cc1f0b52: Pull complete
+Step #0: Digest: sha256:643e7036aa985317ebfee460005e322aa550c6b6883000d01daefb58689a58e2
 Step #0: Status: Downloaded newer image for node:20-alpine
-Step #0:  ---> 6fd15b1a333d
+Step #0:  ---> 9992b59c17bf
 Step #0: Step 2/20 : WORKDIR /app
-Step #0:  ---> Running in e752b68b208f
-Step #0: Removing intermediate container e752b68b208f
-Step #0:  ---> a1d46fd78667
+Step #0:  ---> Running in df8617539ef5
+Step #0: Removing intermediate container df8617539ef5
+Step #0:  ---> 0e492c9071f2
 Step #0: Step 3/20 : RUN apk add --no-cache libc6-compat
-Step #0:  ---> Running in d25bdc32e3a6
-Step #0: fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/main/x86_64/APKINDEX.tar.gz
-Step #0: fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/community/x86_64/APKINDEX.tar.gz
+Step #0:  ---> Running in 0a4d514eac19
 Step #0: (1/3) Installing musl-obstack (1.2.3-r2)
-Step #0: (2/3) Installing libucontext (1.3.2-r0)
+Step #0: (2/3) Installing libucontext (1.3.3-r0)
 Step #0: (3/3) Installing gcompat (1.1.0-r4)
 Step #0: OK: 10 MiB in 21 packages
-Step #0: Removing intermediate container d25bdc32e3a6
-Step #0:  ---> 2bbe3389362c
+Step #0: Removing intermediate container 0a4d514eac19
+Step #0:  ---> c78642d324bb
 Step #0: Step 4/20 : COPY package*.json ./
-Step #0:  ---> 315f4747aaf4
+Step #0:  ---> fbe7b733cc42
 Step #0: Step 5/20 : RUN npm install
-Step #0:  ---> Running in b0c01ee1a85d
+Step #0:  ---> Running in 06b3a6ba9d56
 Step #0: 
 Step #0: added 397 packages, and audited 398 packages in 30s
 Step #0: 
 Step #0: 150 packages are looking for funding
 Step #0:   run `npm fund` for details
 Step #0: 
-Step #0: found 0 vulnerabilities
+Step #0: 1 critical severity vulnerability
+Step #0: 
+Step #0: To address all issues, run:
+Step #0:   npm audit fix --force
+Step #0: 
+Step #0: Run `npm audit` for details.
 Step #0: [91mnpm notice
-Step #0: npm notice New major version of npm available! 10.8.2 -> 11.6.4
-Step #0: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.4
-Step #0: npm notice To update run: npm install -g npm@11.6.4
+Step #0: npm notice New major version of npm available! 10.8.2 -> 11.7.0
+Step #0: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.7.0
+Step #0: npm notice To update run: npm install -g npm@11.7.0
 Step #0: npm notice
-Step #0: [0mRemoving intermediate container b0c01ee1a85d
-Step #0:  ---> 6ceac8774b35
+Step #0: [0mRemoving intermediate container 06b3a6ba9d56
+Step #0:  ---> 4c34ca679133
 Step #0: Step 6/20 : COPY . .
-Step #0:  ---> 11b00422bb6f
+Step #0:  ---> ba6c109cb547
 Step #0: Step 7/20 : RUN npm run build
-Step #0:  ---> Running in d82f46e8d782
+Step #0:  ---> Running in fd2deed581d3
 Step #0: 
 Step #0: > data-mapper@0.1.0 build
 Step #0: > next build
@@ -93,7 +97,7 @@ Step #0:
 Step #0: [91m ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
 Step #0: [0m   Creating an optimized production build ...
 Step #0: [91m[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
-Step #0: [0m ✓ Compiled successfully in 24.5s
+Step #0: [0m ✓ Compiled successfully in 22.8s
 Step #0:    Running TypeScript ...
 Step #0:    Collecting page data using 1 worker ...
 Step #0: [91m[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
@@ -118,12 +122,12 @@ Step #0:   clientVersion: '6.19.0',
 Step #0:   errorCode: undefined,
 Step #0:   retryable: undefined
 Step #0: }
-Step #0: [0m   Generating static pages using 1 worker (0/6) ...
+Step #0: [0m   Generating static pages using 1 worker (0/8) ...
 Step #0: [91m[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
-Step #0: [0m   Generating static pages using 1 worker (1/6) 
-Step #0:    Generating static pages using 1 worker (2/6) 
-Step #0:    Generating static pages using 1 worker (4/6) 
-Step #0:  ✓ Generating static pages using 1 worker (6/6) in 1178.5ms
+Step #0: [0m   Generating static pages using 1 worker (2/8) 
+Step #0:    Generating static pages using 1 worker (4/8) 
+Step #0:    Generating static pages using 1 worker (6/8) 
+Step #0:  ✓ Generating static pages using 1 worker (8/8) in 943.1ms
 Step #0:    Finalizing page optimization ...
 Step #0: 
 Step #0: Route (app)
@@ -131,7 +135,11 @@ Step #0: ┌ ○ /
 Step #0: ├ ○ /_not-found
 Step #0: ├ ƒ /api/health
 Step #0: ├ ƒ /api/v1/ingress/erp
-Step #0: └ ƒ /api/v1/ingress/pos
+Step #0: ├ ƒ /api/v1/ingress/pos
+Step #0: ├ ƒ /api/v1/stores
+Step #0: ├ ƒ /api/v1/stores/[storeId]
+Step #0: ├ ƒ /api/v1/tenants
+Step #0: └ ƒ /api/v1/tenants/[tenantId]
 Step #0: 
 Step #0: 
 Step #0: ƒ Proxy (Middleware)
@@ -139,141 +147,146 @@ Step #0:
 Step #0: ○  (Static)   prerendered as static content
 Step #0: ƒ  (Dynamic)  server-rendered on demand
 Step #0:
-Step #0: Removing intermediate container d82f46e8d782
-Step #0:  ---> 062466a47162
+Step #0: Removing intermediate container fd2deed581d3
+Step #0:  ---> a6cc90c22d2a
 Step #0: Step 8/20 : FROM node:20-alpine AS runner
-Step #0:  ---> 6fd15b1a333d
+Step #0:  ---> 9992b59c17bf
 Step #0: Step 9/20 : WORKDIR /app
 Step #0:  ---> Using cache
-Step #0:  ---> a1d46fd78667
+Step #0:  ---> 0e492c9071f2
 Step #0: Step 10/20 : ENV NODE_ENV=production
-Step #0:  ---> Running in 4341fd8afb19
-Step #0: Removing intermediate container 4341fd8afb19
-Step #0:  ---> 13feb4ec7c4e
+Step #0:  ---> Running in bd923b0954c0
+Step #0: Removing intermediate container bd923b0954c0
+Step #0:  ---> 7279e0877d34
 Step #0: Step 11/20 : ENV PORT=8080
-Step #0:  ---> Running in 496aa8e51b57
-Step #0: Removing intermediate container 496aa8e51b57
-Step #0:  ---> 0dad9e01c1d7
+Step #0:  ---> Running in 39e29a320ac4
+Step #0: Removing intermediate container 39e29a320ac4
+Step #0:  ---> 33894f55a78e
 Step #0: Step 12/20 : COPY package*.json ./
-Step #0:  ---> bc9f9f1b4d96
+Step #0:  ---> 0035c9cf1d95
 Step #0: Step 13/20 : RUN npm install --omit=dev
-Step #0:  ---> Running in 7ed63166c462
+Step #0:  ---> Running in b1605c6a515f
 Step #0: 
-Step #0: added 61 packages, and audited 62 packages in 26s
+Step #0: added 61 packages, and audited 62 packages in 23s
 Step #0: 
 Step #0: 14 packages are looking for funding
 Step #0:   run `npm fund` for details
 Step #0: 
-Step #0: found 0 vulnerabilities
+Step #0: 1 critical severity vulnerability
+Step #0: 
+Step #0: To address all issues, run:
+Step #0:   npm audit fix --force
+Step #0: 
+Step #0: Run `npm audit` for details.
 Step #0: [91mnpm notice
-Step #0: npm notice New major version of npm available! 10.8.2 -> 11.6.4
-Step #0: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.4
-Step #0: npm notice To update run: npm install -g npm@11.6.4
+Step #0: npm notice New major version of npm available! 10.8.2 -> 11.7.0
+Step #0: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.7.0
+Step #0: npm notice To update run: npm install -g npm@11.7.0
 Step #0: npm notice
-Step #0: [0mRemoving intermediate container 7ed63166c462
-Step #0:  ---> d903b7de00ac
+Step #0: [0mRemoving intermediate container b1605c6a515f
+Step #0:  ---> 9d1cd2e30733
 Step #0: Step 14/20 : COPY --from=builder /app/.next/standalone ./
-Step #0:  ---> 83eeed3f1d60
+Step #0:  ---> fa611a4ad8ae
 Step #0: Step 15/20 : COPY --from=builder /app/.next/static ./.next/static
-Step #0:  ---> 9ff2f617c8a3
+Step #0:  ---> 53fd4a073bd4
 Step #0: Step 16/20 : COPY --from=builder /app/public ./public
-Step #0:  ---> 4f329989a598
+Step #0:  ---> 3a0327b87d30
 Step #0: Step 17/20 : RUN addgroup -g 1001 nodejs   && adduser -S -u 1001 -G nodejs nextjs
-Step #0:  ---> Running in 40db57a95ebd
-Step #0: Removing intermediate container 40db57a95ebd
-Step #0:  ---> d65654b546e7
+Step #0:  ---> Running in ba151db1989a
+Step #0: Removing intermediate container ba151db1989a
+Step #0:  ---> 7675316f4292
 Step #0: Step 18/20 : USER nextjs
-Step #0:  ---> Running in 967d1c1abeaf
-Step #0: Removing intermediate container 967d1c1abeaf
-Step #0:  ---> 502d8d995c0b
+Step #0:  ---> Running in 2d4ac23057bf
+Step #0: Removing intermediate container 2d4ac23057bf
+Step #0:  ---> a632f104216f
 Step #0: Step 19/20 : EXPOSE 8080
-Step #0:  ---> Running in d4faaa5c5139
-Step #0: Removing intermediate container d4faaa5c5139
-Step #0:  ---> 05ad331bf0b4
+Step #0:  ---> Running in 9706be73e1f8
+Step #0: Removing intermediate container 9706be73e1f8
+Step #0:  ---> 88ab0d65561f
 Step #0: Step 20/20 : CMD ["node", "server.js"]
-Step #0:  ---> Running in 1e62bb51d3e4
-Step #0: Removing intermediate container 1e62bb51d3e4
-Step #0:  ---> 21ceddb23cc8
-Step #0: Successfully built 21ceddb23cc8
-Step #0: Successfully tagged europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper:v1.1.0
+Step #0:  ---> Running in b6b27493d2c2
+Step #0: Removing intermediate container b6b27493d2c2
+Step #0:  ---> 87189e77a8dd
+Step #0: Successfully built 87189e77a8dd
+Step #0: Successfully tagged europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper:v1.2.0
 Finished Step #0
 Starting Step #1
 Step #1: Already have image (with digest): gcr.io/cloud-builders/docker
 Step #1: The push refers to repository [europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper]
-Step #1: 9618ad76134e: Preparing
-Step #1: f3e66207f722: Preparing
-Step #1: 0070426549c5: Preparing
-Step #1: 448cc54a021f: Preparing
-Step #1: 7ce548710dba: Preparing
-Step #1: 72ed2d13b861: Preparing
-Step #1: 7e36809b9058: Preparing
-Step #1: b0643b6f6505: Preparing
-Step #1: fbeab92e8a42: Preparing
-Step #1: 6acabb04a1c3: Preparing
-Step #1: 256f393e029f: Preparing
-Step #1: 256f393e029f: Waiting
-Step #1: 0070426549c5: Pushed
-Step #1: f3e66207f722: Pushed
-Step #1: 7e36809b9058: Pushed
-Step #1: 72ed2d13b861: Pushed
-Step #1: 9618ad76134e: Pushed
-Step #1: 256f393e029f: Layer already exists
-Step #1: b0643b6f6505: Pushed
-Step #1: fbeab92e8a42: Pushed
-Step #1: 448cc54a021f: Pushed
-Step #1: 6acabb04a1c3: Pushed
-Step #1: 7ce548710dba: Pushed
-Step #1: v1.1.0: digest: sha256:dc4b71cc4a128183078441eb7bf254a59ad4c9a8ddc76291763435814e26ed87 size: 2624
+Step #1: 9aa87a7e63ea: Preparing
+Step #1: b7160e54ea34: Preparing
+Step #1: 8a3ade4d044b: Preparing
+Step #1: c8eb65ae094b: Preparing
+Step #1: e2a158278cbb: Preparing
+Step #1: c88220187102: Preparing
+Step #1: 8cc5170e5f9b: Preparing
+Step #1: c6b6d11f000e: Preparing
+Step #1: 61b83bf0de98: Preparing
+Step #1: 614db0c0a156: Preparing
+Step #1: 5aa68bbbc67e: Preparing
+Step #1: 5aa68bbbc67e: Waiting
+Step #1: b7160e54ea34: Pushed
+Step #1: 9aa87a7e63ea: Pushed
+Step #1: 8a3ade4d044b: Pushed
+Step #1: 8cc5170e5f9b: Pushed
+Step #1: c88220187102: Pushed
+Step #1: c6b6d11f000e: Pushed
+Step #1: 61b83bf0de98: Pushed
+Step #1: 5aa68bbbc67e: Pushed
+Step #1: c8eb65ae094b: Pushed
+Step #1: 614db0c0a156: Pushed
+Step #1: e2a158278cbb: Pushed
+Step #1: v1.2.0: digest: sha256:7ec1c5c1efd5747e8dc3cd3187ffede7802ec534e2b225445186d2df811e0d90 size: 2624
 Finished Step #1
 PUSH
-Pushing europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper:v1.1.0
+Pushing europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper:v1.2.0
 The push refers to repository [europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper]
-9618ad76134e: Preparing
-f3e66207f722: Preparing
-0070426549c5: Preparing
-448cc54a021f: Preparing
-7ce548710dba: Preparing
-72ed2d13b861: Preparing
-7e36809b9058: Preparing
-b0643b6f6505: Preparing
-fbeab92e8a42: Preparing
-6acabb04a1c3: Preparing
-256f393e029f: Preparing
-256f393e029f: Waiting
-fbeab92e8a42: Layer already exists
-b0643b6f6505: Layer already exists
-f3e66207f722: Layer already exists
-7e36809b9058: Layer already exists
-7ce548710dba: Layer already exists
-0070426549c5: Layer already exists
-72ed2d13b861: Layer already exists
-448cc54a021f: Layer already exists
-6acabb04a1c3: Layer already exists
-9618ad76134e: Layer already exists
-256f393e029f: Layer already exists
-v1.1.0: digest: sha256:dc4b71cc4a128183078441eb7bf254a59ad4c9a8ddc76291763435814e26ed87 size: 2624
+9aa87a7e63ea: Preparing
+b7160e54ea34: Preparing
+8a3ade4d044b: Preparing
+c8eb65ae094b: Preparing
+e2a158278cbb: Preparing
+c88220187102: Preparing
+8cc5170e5f9b: Preparing
+c6b6d11f000e: Preparing
+61b83bf0de98: Preparing
+614db0c0a156: Preparing
+5aa68bbbc67e: Preparing
+5aa68bbbc67e: Waiting
+8a3ade4d044b: Layer already exists
+e2a158278cbb: Layer already exists
+c6b6d11f000e: Layer already exists
+9aa87a7e63ea: Layer already exists
+61b83bf0de98: Layer already exists
+c88220187102: Layer already exists
+614db0c0a156: Layer already exists
+8cc5170e5f9b: Layer already exists
+b7160e54ea34: Layer already exists
+c8eb65ae094b: Layer already exists
+5aa68bbbc67e: Layer already exists
+v1.2.0: digest: sha256:7ec1c5c1efd5747e8dc3cd3187ffede7802ec534e2b225445186d2df811e0d90 size: 2624
 DONE
----------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 ID                                    CREATE_TIME                DURATION  SOURCE                                                                                             IMAGES                                                                               STATUS
-d62e22c2-a798-45b9-9005-5df2a4bc622b  2025-11-29T13:35:33+00:00  3M45S     gs://sdsanalyticsservice_cloudbuild/source/1764423317.809225-de1a8f05596348579db56e50d7ca302d.tgz  europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper:v1.1.0  SUCCESS
-Old revision: data-mapper-00002-h66
+8a01642a-f5f5-4e0a-8119-7be29ab17e85  2025-12-11T04:22:49+00:00  3M40S     gs://sdsanalyticsservice_cloudbuild/source/1765426964.057681-0c2be4ff42334b4baec59cdab70e335f.tgz  europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper:v1.2.0  SUCCESS
+Old revision: data-mapper-00004-s76
 Deploy Cloud Run...
 Deploying container to Cloud Run service [[1mdata-mapper[m] in project [[1msdsanalyticsservice[m] region [[1meurope-west1[m]
 Deploying...
 Setting IAM Policy..................done
-Creating Revision.................................................................................................................................................done
+Creating Revision...................................................................................................................................................done
 Routing traffic.....done
 Done.
-Service [[1mdata-mapper[m] revision [[1mdata-mapper-00003-54w[m] has been deployed and is serving [1m100[m percent of traffic.
+Service [[1mdata-mapper[m] revision [[1mdata-mapper-00005-zpp[m] has been deployed and is serving [1m100[m percent of traffic.
 Service URL: [1mhttps://data-mapper-542854471096.europe-west1.run.app[m
 Health check...
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    15    0    15    0     0     43      0 --:--:-- --:--:-- --:--:--    43
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    15    0    15    0     0     18      0 --:--:-- --:--:-- --:--:--    18100    15    0    15    0     0     18      0 --:--:-- --:--:-- --:--:--    18
 {"status":"ok"}[SUCCESS] Deploy data-mapper riuscito
 Ref: refs/heads/main
-Commit: f860536 - feat: add v1 ingress endpoints for POS and ERP
-Immagine: europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper:v1.1.0
-Durata: 4m40s
+Commit: 588f6f2 - feat: rename activity to store and introduce tenant management
+Immagine: europe-west1-docker.pkg.dev/sdsanalyticsservice/data-mapper-repo/data-mapper:v1.2.0
+Durata: 4m24s
 Dettagli: https://console.cloud.google.com/run/detail/europe-west1/data-mapper?project=sdsanalyticsservice
-Fine deploy data-mapper v1.1.0
+Fine deploy data-mapper v1.2.0
