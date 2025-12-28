@@ -18,7 +18,7 @@ RUN npm install
 COPY . .
 
 # Build in modalità standalone
-RUN npx prisma generate
+RUN DATABASE_URL="mongodb://dummy" npx prisma generate
 RUN npm run build
 
 
