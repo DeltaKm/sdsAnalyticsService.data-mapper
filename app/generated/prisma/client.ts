@@ -44,6 +44,10 @@ export { Prisma }
 path.join(__dirname, "libquery_engine-darwin-arm64.dylib.node")
 path.join(process.cwd(), "app/generated/prisma/libquery_engine-darwin-arm64.dylib.node")
 
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-linux-musl-openssl-3.0.x.so.node")
+path.join(process.cwd(), "app/generated/prisma/libquery_engine-linux-musl-openssl-3.0.x.so.node")
+
 /**
  * Model IngressEvent
  * 
@@ -69,3 +73,8 @@ export type Store = Prisma.StoreModel
  * 
  */
 export type Tenant = Prisma.TenantModel
+/**
+ * Model BusinessUnit
+ * 
+ */
+export type BusinessUnit = Prisma.BusinessUnitModel

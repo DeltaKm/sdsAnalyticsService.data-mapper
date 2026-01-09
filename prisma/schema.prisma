@@ -93,3 +93,21 @@ model Tenant {
   stores Store[]
 }
 
+/// -------------------
+/// Business Units (anagrafica by uniqueKey)
+/// -------------------
+
+model BusinessUnit {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  uniqueKey  String   @unique
+  instance   String?
+  corporate  Json?
+  company    Json?
+  store      Json?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("business_units")
+}
+

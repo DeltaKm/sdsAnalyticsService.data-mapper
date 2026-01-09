@@ -42,3 +42,8 @@ export type Store = Prisma.StoreModel
  * 
  */
 export type Tenant = Prisma.TenantModel
+/**
+ * Model BusinessUnit
+ * 
+ */
+export type BusinessUnit = Prisma.BusinessUnitModel

@@ -53,7 +53,8 @@ export const ModelName = {
   StoreGroup: 'StoreGroup',
   StoreSubgroup: 'StoreSubgroup',
   Store: 'Store',
-  Tenant: 'Tenant'
+  Tenant: 'Tenant',
+  BusinessUnit: 'BusinessUnit'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -124,6 +125,21 @@ export const TenantScalarFieldEnum = {
 } as const
 
 export type TenantScalarFieldEnum = (typeof TenantScalarFieldEnum)[keyof typeof TenantScalarFieldEnum]
+
+
+export const BusinessUnitScalarFieldEnum = {
+  id: 'id',
+  uniqueKey: 'uniqueKey',
+  instance: 'instance',
+  corporate: 'corporate',
+  company: 'company',
+  store: 'store',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BusinessUnitScalarFieldEnum = (typeof BusinessUnitScalarFieldEnum)[keyof typeof BusinessUnitScalarFieldEnum]
 
 
 export const SortOrder = {

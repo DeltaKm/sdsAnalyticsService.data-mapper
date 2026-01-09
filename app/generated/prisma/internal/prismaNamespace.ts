@@ -394,7 +394,8 @@ export const ModelName = {
   StoreGroup: 'StoreGroup',
   StoreSubgroup: 'StoreSubgroup',
   Store: 'Store',
-  Tenant: 'Tenant'
+  Tenant: 'Tenant',
+  BusinessUnit: 'BusinessUnit'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -410,7 +411,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "ingressEvent" | "storeGroup" | "storeSubgroup" | "store" | "tenant"
+    modelProps: "ingressEvent" | "storeGroup" | "storeSubgroup" | "store" | "tenant" | "businessUnit"
     txIsolationLevel: never
   }
   model: {
@@ -784,6 +785,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    BusinessUnit: {
+      payload: Prisma.$BusinessUnitPayload<ExtArgs>
+      fields: Prisma.BusinessUnitFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BusinessUnitFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BusinessUnitPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BusinessUnitFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BusinessUnitPayload>
+        }
+        findFirst: {
+          args: Prisma.BusinessUnitFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BusinessUnitPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BusinessUnitFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BusinessUnitPayload>
+        }
+        findMany: {
+          args: Prisma.BusinessUnitFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BusinessUnitPayload>[]
+        }
+        create: {
+          args: Prisma.BusinessUnitCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BusinessUnitPayload>
+        }
+        createMany: {
+          args: Prisma.BusinessUnitCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.BusinessUnitDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BusinessUnitPayload>
+        }
+        update: {
+          args: Prisma.BusinessUnitUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BusinessUnitPayload>
+        }
+        deleteMany: {
+          args: Prisma.BusinessUnitDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BusinessUnitUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.BusinessUnitUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BusinessUnitPayload>
+        }
+        aggregate: {
+          args: Prisma.BusinessUnitAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBusinessUnit>
+        }
+        groupBy: {
+          args: Prisma.BusinessUnitGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BusinessUnitGroupByOutputType>[]
+        }
+        findRaw: {
+          args: Prisma.BusinessUnitFindRawArgs<ExtArgs>
+          result: Prisma.JsonObject
+        }
+        aggregateRaw: {
+          args: Prisma.BusinessUnitAggregateRawArgs<ExtArgs>
+          result: Prisma.JsonObject
+        }
+        count: {
+          args: Prisma.BusinessUnitCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BusinessUnitCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -863,6 +938,21 @@ export const TenantScalarFieldEnum = {
 } as const
 
 export type TenantScalarFieldEnum = (typeof TenantScalarFieldEnum)[keyof typeof TenantScalarFieldEnum]
+
+
+export const BusinessUnitScalarFieldEnum = {
+  id: 'id',
+  uniqueKey: 'uniqueKey',
+  instance: 'instance',
+  corporate: 'corporate',
+  company: 'company',
+  store: 'store',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BusinessUnitScalarFieldEnum = (typeof BusinessUnitScalarFieldEnum)[keyof typeof BusinessUnitScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1040,6 +1130,7 @@ export type GlobalOmitConfig = {
   storeSubgroup?: Prisma.StoreSubgroupOmit
   store?: Prisma.StoreOmit
   tenant?: Prisma.TenantOmit
+  businessUnit?: Prisma.BusinessUnitOmit
 }
 
 /* Types for Logging */
