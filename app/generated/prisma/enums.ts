@@ -9,6 +9,16 @@
 * 🟢 You can import this file directly.
 */
 
+export const OverviewRange = {
+  LAST_7_DAYS: 'LAST_7_DAYS',
+  LAST_30_DAYS: 'LAST_30_DAYS',
+  LAST_90_DAYS: 'LAST_90_DAYS',
+  LIFETIME: 'LIFETIME'
+} as const
+
+export type OverviewRange = (typeof OverviewRange)[keyof typeof OverviewRange]
+
+
 export const IngressSource = {
   POS: 'POS',
   ERP: 'ERP'

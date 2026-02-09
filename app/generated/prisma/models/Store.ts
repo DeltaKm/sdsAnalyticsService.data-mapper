@@ -26,37 +26,39 @@ export type AggregateStore = {
 
 export type StoreMinAggregateOutputType = {
   id: string | null
-  storeId: string | null
-  tenantId: string | null
-  groupId: string | null
-  subgroupId: string | null
+  code: string | null
   name: string | null
-  status: string | null
+  uniqueKey: string | null
+  timezone: string | null
+  address: string | null
+  city: string | null
+  region: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type StoreMaxAggregateOutputType = {
   id: string | null
-  storeId: string | null
-  tenantId: string | null
-  groupId: string | null
-  subgroupId: string | null
+  code: string | null
   name: string | null
-  status: string | null
+  uniqueKey: string | null
+  timezone: string | null
+  address: string | null
+  city: string | null
+  region: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type StoreCountAggregateOutputType = {
   id: number
-  storeId: number
-  tenantId: number
-  groupId: number
-  subgroupId: number
+  code: number
   name: number
-  status: number
-  metadata: number
+  uniqueKey: number
+  timezone: number
+  address: number
+  city: number
+  region: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -65,37 +67,39 @@ export type StoreCountAggregateOutputType = {
 
 export type StoreMinAggregateInputType = {
   id?: true
-  storeId?: true
-  tenantId?: true
-  groupId?: true
-  subgroupId?: true
+  code?: true
   name?: true
-  status?: true
+  uniqueKey?: true
+  timezone?: true
+  address?: true
+  city?: true
+  region?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type StoreMaxAggregateInputType = {
   id?: true
-  storeId?: true
-  tenantId?: true
-  groupId?: true
-  subgroupId?: true
+  code?: true
   name?: true
-  status?: true
+  uniqueKey?: true
+  timezone?: true
+  address?: true
+  city?: true
+  region?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type StoreCountAggregateInputType = {
   id?: true
-  storeId?: true
-  tenantId?: true
-  groupId?: true
-  subgroupId?: true
+  code?: true
   name?: true
-  status?: true
-  metadata?: true
+  uniqueKey?: true
+  timezone?: true
+  address?: true
+  city?: true
+  region?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -175,13 +179,13 @@ export type StoreGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 
 export type StoreGroupByOutputType = {
   id: string
-  storeId: string
-  tenantId: string
-  groupId: string
-  subgroupId: string | null
-  name: string | null
-  status: string
-  metadata: runtime.JsonValue | null
+  code: string
+  name: string
+  uniqueKey: string | null
+  timezone: string
+  address: string | null
+  city: string | null
+  region: string | null
   createdAt: Date
   updatedAt: Date
   _count: StoreCountAggregateOutputType | null
@@ -209,65 +213,76 @@ export type StoreWhereInput = {
   OR?: Prisma.StoreWhereInput[]
   NOT?: Prisma.StoreWhereInput | Prisma.StoreWhereInput[]
   id?: Prisma.StringFilter<"Store"> | string
-  storeId?: Prisma.StringFilter<"Store"> | string
-  tenantId?: Prisma.StringFilter<"Store"> | string
-  groupId?: Prisma.StringFilter<"Store"> | string
-  subgroupId?: Prisma.StringNullableFilter<"Store"> | string | null
-  name?: Prisma.StringNullableFilter<"Store"> | string | null
-  status?: Prisma.StringFilter<"Store"> | string
-  metadata?: Prisma.JsonNullableFilter<"Store">
+  code?: Prisma.StringFilter<"Store"> | string
+  name?: Prisma.StringFilter<"Store"> | string
+  uniqueKey?: Prisma.StringNullableFilter<"Store"> | string | null
+  timezone?: Prisma.StringFilter<"Store"> | string
+  address?: Prisma.StringNullableFilter<"Store"> | string | null
+  city?: Prisma.StringNullableFilter<"Store"> | string | null
+  region?: Prisma.StringNullableFilter<"Store"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Store"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Store"> | Date | string
-  group?: Prisma.XOR<Prisma.StoreGroupScalarRelationFilter, Prisma.StoreGroupWhereInput>
-  subgroup?: Prisma.XOR<Prisma.StoreSubgroupNullableScalarRelationFilter, Prisma.StoreSubgroupWhereInput> | null
-  tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
+  operators?: Prisma.OperatorListRelationFilter
+  sales?: Prisma.SaleListRelationFilter
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsListRelationFilter
+  overviewRollups?: Prisma.OverviewRollupListRelationFilter
+  salesStoreDaily?: Prisma.SalesStoreDailyListRelationFilter
+  salesOperatorDaily?: Prisma.SalesOperatorDailyListRelationFilter
+  catalogItemDaily?: Prisma.CatalogItemDailyListRelationFilter
 }
 
 export type StoreOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  storeId?: Prisma.SortOrder
-  tenantId?: Prisma.SortOrder
-  groupId?: Prisma.SortOrder
-  subgroupId?: Prisma.SortOrder
+  code?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  metadata?: Prisma.SortOrder
+  uniqueKey?: Prisma.SortOrder
+  timezone?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  region?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  group?: Prisma.StoreGroupOrderByWithRelationInput
-  subgroup?: Prisma.StoreSubgroupOrderByWithRelationInput
-  tenant?: Prisma.TenantOrderByWithRelationInput
+  operators?: Prisma.OperatorOrderByRelationAggregateInput
+  sales?: Prisma.SaleOrderByRelationAggregateInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsOrderByRelationAggregateInput
+  overviewRollups?: Prisma.OverviewRollupOrderByRelationAggregateInput
+  salesStoreDaily?: Prisma.SalesStoreDailyOrderByRelationAggregateInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyOrderByRelationAggregateInput
+  catalogItemDaily?: Prisma.CatalogItemDailyOrderByRelationAggregateInput
 }
 
 export type StoreWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  tenantId_storeId?: Prisma.StoreTenantIdStoreIdCompoundUniqueInput
+  code?: string
   AND?: Prisma.StoreWhereInput | Prisma.StoreWhereInput[]
   OR?: Prisma.StoreWhereInput[]
   NOT?: Prisma.StoreWhereInput | Prisma.StoreWhereInput[]
-  storeId?: Prisma.StringFilter<"Store"> | string
-  tenantId?: Prisma.StringFilter<"Store"> | string
-  groupId?: Prisma.StringFilter<"Store"> | string
-  subgroupId?: Prisma.StringNullableFilter<"Store"> | string | null
-  name?: Prisma.StringNullableFilter<"Store"> | string | null
-  status?: Prisma.StringFilter<"Store"> | string
-  metadata?: Prisma.JsonNullableFilter<"Store">
+  name?: Prisma.StringFilter<"Store"> | string
+  uniqueKey?: Prisma.StringNullableFilter<"Store"> | string | null
+  timezone?: Prisma.StringFilter<"Store"> | string
+  address?: Prisma.StringNullableFilter<"Store"> | string | null
+  city?: Prisma.StringNullableFilter<"Store"> | string | null
+  region?: Prisma.StringNullableFilter<"Store"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Store"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Store"> | Date | string
-  group?: Prisma.XOR<Prisma.StoreGroupScalarRelationFilter, Prisma.StoreGroupWhereInput>
-  subgroup?: Prisma.XOR<Prisma.StoreSubgroupNullableScalarRelationFilter, Prisma.StoreSubgroupWhereInput> | null
-  tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
-}, "id" | "tenantId_storeId">
+  operators?: Prisma.OperatorListRelationFilter
+  sales?: Prisma.SaleListRelationFilter
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsListRelationFilter
+  overviewRollups?: Prisma.OverviewRollupListRelationFilter
+  salesStoreDaily?: Prisma.SalesStoreDailyListRelationFilter
+  salesOperatorDaily?: Prisma.SalesOperatorDailyListRelationFilter
+  catalogItemDaily?: Prisma.CatalogItemDailyListRelationFilter
+}, "id" | "code">
 
 export type StoreOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  storeId?: Prisma.SortOrder
-  tenantId?: Prisma.SortOrder
-  groupId?: Prisma.SortOrder
-  subgroupId?: Prisma.SortOrder
+  code?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  metadata?: Prisma.SortOrder
+  uniqueKey?: Prisma.SortOrder
+  timezone?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  region?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.StoreCountOrderByAggregateInput
@@ -280,633 +295,1081 @@ export type StoreScalarWhereWithAggregatesInput = {
   OR?: Prisma.StoreScalarWhereWithAggregatesInput[]
   NOT?: Prisma.StoreScalarWhereWithAggregatesInput | Prisma.StoreScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Store"> | string
-  storeId?: Prisma.StringWithAggregatesFilter<"Store"> | string
-  tenantId?: Prisma.StringWithAggregatesFilter<"Store"> | string
-  groupId?: Prisma.StringWithAggregatesFilter<"Store"> | string
-  subgroupId?: Prisma.StringNullableWithAggregatesFilter<"Store"> | string | null
-  name?: Prisma.StringNullableWithAggregatesFilter<"Store"> | string | null
-  status?: Prisma.StringWithAggregatesFilter<"Store"> | string
-  metadata?: Prisma.JsonNullableWithAggregatesFilter<"Store">
+  code?: Prisma.StringWithAggregatesFilter<"Store"> | string
+  name?: Prisma.StringWithAggregatesFilter<"Store"> | string
+  uniqueKey?: Prisma.StringNullableWithAggregatesFilter<"Store"> | string | null
+  timezone?: Prisma.StringWithAggregatesFilter<"Store"> | string
+  address?: Prisma.StringNullableWithAggregatesFilter<"Store"> | string | null
+  city?: Prisma.StringNullableWithAggregatesFilter<"Store"> | string | null
+  region?: Prisma.StringNullableWithAggregatesFilter<"Store"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Store"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Store"> | Date | string
 }
 
 export type StoreCreateInput = {
   id?: string
-  storeId: string
-  name?: string | null
-  status?: string
-  metadata?: runtime.InputJsonValue | null
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  group: Prisma.StoreGroupCreateNestedOneWithoutStoresInput
-  subgroup?: Prisma.StoreSubgroupCreateNestedOneWithoutStoresInput
-  tenant: Prisma.TenantCreateNestedOneWithoutStoresInput
+  operators?: Prisma.OperatorCreateNestedManyWithoutStoreInput
+  sales?: Prisma.SaleCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyCreateNestedManyWithoutStoreInput
 }
 
 export type StoreUncheckedCreateInput = {
   id?: string
-  storeId: string
-  tenantId: string
-  groupId: string
-  subgroupId?: string | null
-  name?: string | null
-  status?: string
-  metadata?: runtime.InputJsonValue | null
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  operators?: Prisma.OperatorUncheckedCreateNestedManyWithoutStoreInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedCreateNestedManyWithoutStoreInput
 }
 
 export type StoreUpdateInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  group?: Prisma.StoreGroupUpdateOneRequiredWithoutStoresNestedInput
-  subgroup?: Prisma.StoreSubgroupUpdateOneWithoutStoresNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutStoresNestedInput
+  operators?: Prisma.OperatorUpdateManyWithoutStoreNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUpdateManyWithoutStoreNestedInput
 }
 
 export type StoreUncheckedUpdateInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  groupId?: Prisma.StringFieldUpdateOperationsInput | string
-  subgroupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operators?: Prisma.OperatorUncheckedUpdateManyWithoutStoreNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedUpdateManyWithoutStoreNestedInput
 }
 
 export type StoreCreateManyInput = {
   id?: string
-  storeId: string
-  tenantId: string
-  groupId: string
-  subgroupId?: string | null
-  name?: string | null
-  status?: string
-  metadata?: runtime.InputJsonValue | null
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type StoreUpdateManyMutationInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StoreUncheckedUpdateManyInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  groupId?: Prisma.StringFieldUpdateOperationsInput | string
-  subgroupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type StoreListRelationFilter = {
-  every?: Prisma.StoreWhereInput
-  some?: Prisma.StoreWhereInput
-  none?: Prisma.StoreWhereInput
-}
-
-export type StoreOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
-}
-
-export type StoreTenantIdStoreIdCompoundUniqueInput = {
-  tenantId: string
-  storeId: string
-}
-
 export type StoreCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  storeId?: Prisma.SortOrder
-  tenantId?: Prisma.SortOrder
-  groupId?: Prisma.SortOrder
-  subgroupId?: Prisma.SortOrder
+  code?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  metadata?: Prisma.SortOrder
+  uniqueKey?: Prisma.SortOrder
+  timezone?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  region?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type StoreMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  storeId?: Prisma.SortOrder
-  tenantId?: Prisma.SortOrder
-  groupId?: Prisma.SortOrder
-  subgroupId?: Prisma.SortOrder
+  code?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  uniqueKey?: Prisma.SortOrder
+  timezone?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  region?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type StoreMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  storeId?: Prisma.SortOrder
-  tenantId?: Prisma.SortOrder
-  groupId?: Prisma.SortOrder
-  subgroupId?: Prisma.SortOrder
+  code?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  uniqueKey?: Prisma.SortOrder
+  timezone?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  region?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
-export type StoreCreateNestedManyWithoutGroupInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutGroupInput, Prisma.StoreUncheckedCreateWithoutGroupInput> | Prisma.StoreCreateWithoutGroupInput[] | Prisma.StoreUncheckedCreateWithoutGroupInput[]
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutGroupInput | Prisma.StoreCreateOrConnectWithoutGroupInput[]
-  createMany?: Prisma.StoreCreateManyGroupInputEnvelope
-  connect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
+export type StoreNullableScalarRelationFilter = {
+  is?: Prisma.StoreWhereInput | null
+  isNot?: Prisma.StoreWhereInput | null
 }
 
-export type StoreUncheckedCreateNestedManyWithoutGroupInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutGroupInput, Prisma.StoreUncheckedCreateWithoutGroupInput> | Prisma.StoreCreateWithoutGroupInput[] | Prisma.StoreUncheckedCreateWithoutGroupInput[]
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutGroupInput | Prisma.StoreCreateOrConnectWithoutGroupInput[]
-  createMany?: Prisma.StoreCreateManyGroupInputEnvelope
-  connect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
+export type StoreScalarRelationFilter = {
+  is?: Prisma.StoreWhereInput
+  isNot?: Prisma.StoreWhereInput
 }
 
-export type StoreUpdateManyWithoutGroupNestedInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutGroupInput, Prisma.StoreUncheckedCreateWithoutGroupInput> | Prisma.StoreCreateWithoutGroupInput[] | Prisma.StoreUncheckedCreateWithoutGroupInput[]
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutGroupInput | Prisma.StoreCreateOrConnectWithoutGroupInput[]
-  upsert?: Prisma.StoreUpsertWithWhereUniqueWithoutGroupInput | Prisma.StoreUpsertWithWhereUniqueWithoutGroupInput[]
-  createMany?: Prisma.StoreCreateManyGroupInputEnvelope
-  set?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  disconnect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  delete?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  connect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  update?: Prisma.StoreUpdateWithWhereUniqueWithoutGroupInput | Prisma.StoreUpdateWithWhereUniqueWithoutGroupInput[]
-  updateMany?: Prisma.StoreUpdateManyWithWhereWithoutGroupInput | Prisma.StoreUpdateManyWithWhereWithoutGroupInput[]
-  deleteMany?: Prisma.StoreScalarWhereInput | Prisma.StoreScalarWhereInput[]
+export type StringFieldUpdateOperationsInput = {
+  set?: string
 }
 
-export type StoreUncheckedUpdateManyWithoutGroupNestedInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutGroupInput, Prisma.StoreUncheckedCreateWithoutGroupInput> | Prisma.StoreCreateWithoutGroupInput[] | Prisma.StoreUncheckedCreateWithoutGroupInput[]
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutGroupInput | Prisma.StoreCreateOrConnectWithoutGroupInput[]
-  upsert?: Prisma.StoreUpsertWithWhereUniqueWithoutGroupInput | Prisma.StoreUpsertWithWhereUniqueWithoutGroupInput[]
-  createMany?: Prisma.StoreCreateManyGroupInputEnvelope
-  set?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  disconnect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  delete?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  connect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  update?: Prisma.StoreUpdateWithWhereUniqueWithoutGroupInput | Prisma.StoreUpdateWithWhereUniqueWithoutGroupInput[]
-  updateMany?: Prisma.StoreUpdateManyWithWhereWithoutGroupInput | Prisma.StoreUpdateManyWithWhereWithoutGroupInput[]
-  deleteMany?: Prisma.StoreScalarWhereInput | Prisma.StoreScalarWhereInput[]
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+  unset?: boolean
 }
 
-export type StoreCreateNestedManyWithoutSubgroupInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutSubgroupInput, Prisma.StoreUncheckedCreateWithoutSubgroupInput> | Prisma.StoreCreateWithoutSubgroupInput[] | Prisma.StoreUncheckedCreateWithoutSubgroupInput[]
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutSubgroupInput | Prisma.StoreCreateOrConnectWithoutSubgroupInput[]
-  createMany?: Prisma.StoreCreateManySubgroupInputEnvelope
-  connect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
 }
 
-export type StoreUncheckedCreateNestedManyWithoutSubgroupInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutSubgroupInput, Prisma.StoreUncheckedCreateWithoutSubgroupInput> | Prisma.StoreCreateWithoutSubgroupInput[] | Prisma.StoreUncheckedCreateWithoutSubgroupInput[]
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutSubgroupInput | Prisma.StoreCreateOrConnectWithoutSubgroupInput[]
-  createMany?: Prisma.StoreCreateManySubgroupInputEnvelope
-  connect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
+export type StoreCreateNestedOneWithoutOperatorsInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutOperatorsInput, Prisma.StoreUncheckedCreateWithoutOperatorsInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutOperatorsInput
+  connect?: Prisma.StoreWhereUniqueInput
 }
 
-export type StoreUpdateManyWithoutSubgroupNestedInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutSubgroupInput, Prisma.StoreUncheckedCreateWithoutSubgroupInput> | Prisma.StoreCreateWithoutSubgroupInput[] | Prisma.StoreUncheckedCreateWithoutSubgroupInput[]
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutSubgroupInput | Prisma.StoreCreateOrConnectWithoutSubgroupInput[]
-  upsert?: Prisma.StoreUpsertWithWhereUniqueWithoutSubgroupInput | Prisma.StoreUpsertWithWhereUniqueWithoutSubgroupInput[]
-  createMany?: Prisma.StoreCreateManySubgroupInputEnvelope
-  set?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  disconnect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  delete?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  connect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  update?: Prisma.StoreUpdateWithWhereUniqueWithoutSubgroupInput | Prisma.StoreUpdateWithWhereUniqueWithoutSubgroupInput[]
-  updateMany?: Prisma.StoreUpdateManyWithWhereWithoutSubgroupInput | Prisma.StoreUpdateManyWithWhereWithoutSubgroupInput[]
-  deleteMany?: Prisma.StoreScalarWhereInput | Prisma.StoreScalarWhereInput[]
+export type StoreUpdateOneWithoutOperatorsNestedInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutOperatorsInput, Prisma.StoreUncheckedCreateWithoutOperatorsInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutOperatorsInput
+  upsert?: Prisma.StoreUpsertWithoutOperatorsInput
+  disconnect?: boolean
+  delete?: Prisma.StoreWhereInput | boolean
+  connect?: Prisma.StoreWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StoreUpdateToOneWithWhereWithoutOperatorsInput, Prisma.StoreUpdateWithoutOperatorsInput>, Prisma.StoreUncheckedUpdateWithoutOperatorsInput>
 }
 
-export type StoreUncheckedUpdateManyWithoutSubgroupNestedInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutSubgroupInput, Prisma.StoreUncheckedCreateWithoutSubgroupInput> | Prisma.StoreCreateWithoutSubgroupInput[] | Prisma.StoreUncheckedCreateWithoutSubgroupInput[]
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutSubgroupInput | Prisma.StoreCreateOrConnectWithoutSubgroupInput[]
-  upsert?: Prisma.StoreUpsertWithWhereUniqueWithoutSubgroupInput | Prisma.StoreUpsertWithWhereUniqueWithoutSubgroupInput[]
-  createMany?: Prisma.StoreCreateManySubgroupInputEnvelope
-  set?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  disconnect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  delete?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  connect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  update?: Prisma.StoreUpdateWithWhereUniqueWithoutSubgroupInput | Prisma.StoreUpdateWithWhereUniqueWithoutSubgroupInput[]
-  updateMany?: Prisma.StoreUpdateManyWithWhereWithoutSubgroupInput | Prisma.StoreUpdateManyWithWhereWithoutSubgroupInput[]
-  deleteMany?: Prisma.StoreScalarWhereInput | Prisma.StoreScalarWhereInput[]
+export type StoreCreateNestedOneWithoutSalesInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutSalesInput, Prisma.StoreUncheckedCreateWithoutSalesInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutSalesInput
+  connect?: Prisma.StoreWhereUniqueInput
 }
 
-export type StoreCreateNestedManyWithoutTenantInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutTenantInput, Prisma.StoreUncheckedCreateWithoutTenantInput> | Prisma.StoreCreateWithoutTenantInput[] | Prisma.StoreUncheckedCreateWithoutTenantInput[]
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutTenantInput | Prisma.StoreCreateOrConnectWithoutTenantInput[]
-  createMany?: Prisma.StoreCreateManyTenantInputEnvelope
-  connect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
+export type StoreUpdateOneRequiredWithoutSalesNestedInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutSalesInput, Prisma.StoreUncheckedCreateWithoutSalesInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutSalesInput
+  upsert?: Prisma.StoreUpsertWithoutSalesInput
+  connect?: Prisma.StoreWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StoreUpdateToOneWithWhereWithoutSalesInput, Prisma.StoreUpdateWithoutSalesInput>, Prisma.StoreUncheckedUpdateWithoutSalesInput>
 }
 
-export type StoreUncheckedCreateNestedManyWithoutTenantInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutTenantInput, Prisma.StoreUncheckedCreateWithoutTenantInput> | Prisma.StoreCreateWithoutTenantInput[] | Prisma.StoreUncheckedCreateWithoutTenantInput[]
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutTenantInput | Prisma.StoreCreateOrConnectWithoutTenantInput[]
-  createMany?: Prisma.StoreCreateManyTenantInputEnvelope
-  connect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
+export type StoreCreateNestedOneWithoutOverviewDailyMetricsInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutOverviewDailyMetricsInput, Prisma.StoreUncheckedCreateWithoutOverviewDailyMetricsInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutOverviewDailyMetricsInput
+  connect?: Prisma.StoreWhereUniqueInput
 }
 
-export type StoreUpdateManyWithoutTenantNestedInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutTenantInput, Prisma.StoreUncheckedCreateWithoutTenantInput> | Prisma.StoreCreateWithoutTenantInput[] | Prisma.StoreUncheckedCreateWithoutTenantInput[]
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutTenantInput | Prisma.StoreCreateOrConnectWithoutTenantInput[]
-  upsert?: Prisma.StoreUpsertWithWhereUniqueWithoutTenantInput | Prisma.StoreUpsertWithWhereUniqueWithoutTenantInput[]
-  createMany?: Prisma.StoreCreateManyTenantInputEnvelope
-  set?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  disconnect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  delete?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  connect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  update?: Prisma.StoreUpdateWithWhereUniqueWithoutTenantInput | Prisma.StoreUpdateWithWhereUniqueWithoutTenantInput[]
-  updateMany?: Prisma.StoreUpdateManyWithWhereWithoutTenantInput | Prisma.StoreUpdateManyWithWhereWithoutTenantInput[]
-  deleteMany?: Prisma.StoreScalarWhereInput | Prisma.StoreScalarWhereInput[]
+export type StoreUpdateOneRequiredWithoutOverviewDailyMetricsNestedInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutOverviewDailyMetricsInput, Prisma.StoreUncheckedCreateWithoutOverviewDailyMetricsInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutOverviewDailyMetricsInput
+  upsert?: Prisma.StoreUpsertWithoutOverviewDailyMetricsInput
+  connect?: Prisma.StoreWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StoreUpdateToOneWithWhereWithoutOverviewDailyMetricsInput, Prisma.StoreUpdateWithoutOverviewDailyMetricsInput>, Prisma.StoreUncheckedUpdateWithoutOverviewDailyMetricsInput>
 }
 
-export type StoreUncheckedUpdateManyWithoutTenantNestedInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutTenantInput, Prisma.StoreUncheckedCreateWithoutTenantInput> | Prisma.StoreCreateWithoutTenantInput[] | Prisma.StoreUncheckedCreateWithoutTenantInput[]
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutTenantInput | Prisma.StoreCreateOrConnectWithoutTenantInput[]
-  upsert?: Prisma.StoreUpsertWithWhereUniqueWithoutTenantInput | Prisma.StoreUpsertWithWhereUniqueWithoutTenantInput[]
-  createMany?: Prisma.StoreCreateManyTenantInputEnvelope
-  set?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  disconnect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  delete?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  connect?: Prisma.StoreWhereUniqueInput | Prisma.StoreWhereUniqueInput[]
-  update?: Prisma.StoreUpdateWithWhereUniqueWithoutTenantInput | Prisma.StoreUpdateWithWhereUniqueWithoutTenantInput[]
-  updateMany?: Prisma.StoreUpdateManyWithWhereWithoutTenantInput | Prisma.StoreUpdateManyWithWhereWithoutTenantInput[]
-  deleteMany?: Prisma.StoreScalarWhereInput | Prisma.StoreScalarWhereInput[]
+export type StoreCreateNestedOneWithoutOverviewRollupsInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutOverviewRollupsInput, Prisma.StoreUncheckedCreateWithoutOverviewRollupsInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutOverviewRollupsInput
+  connect?: Prisma.StoreWhereUniqueInput
 }
 
-export type StoreCreateWithoutGroupInput = {
+export type StoreUpdateOneRequiredWithoutOverviewRollupsNestedInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutOverviewRollupsInput, Prisma.StoreUncheckedCreateWithoutOverviewRollupsInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutOverviewRollupsInput
+  upsert?: Prisma.StoreUpsertWithoutOverviewRollupsInput
+  connect?: Prisma.StoreWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StoreUpdateToOneWithWhereWithoutOverviewRollupsInput, Prisma.StoreUpdateWithoutOverviewRollupsInput>, Prisma.StoreUncheckedUpdateWithoutOverviewRollupsInput>
+}
+
+export type StoreCreateNestedOneWithoutSalesStoreDailyInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutSalesStoreDailyInput, Prisma.StoreUncheckedCreateWithoutSalesStoreDailyInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutSalesStoreDailyInput
+  connect?: Prisma.StoreWhereUniqueInput
+}
+
+export type StoreUpdateOneRequiredWithoutSalesStoreDailyNestedInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutSalesStoreDailyInput, Prisma.StoreUncheckedCreateWithoutSalesStoreDailyInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutSalesStoreDailyInput
+  upsert?: Prisma.StoreUpsertWithoutSalesStoreDailyInput
+  connect?: Prisma.StoreWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StoreUpdateToOneWithWhereWithoutSalesStoreDailyInput, Prisma.StoreUpdateWithoutSalesStoreDailyInput>, Prisma.StoreUncheckedUpdateWithoutSalesStoreDailyInput>
+}
+
+export type StoreCreateNestedOneWithoutSalesOperatorDailyInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutSalesOperatorDailyInput, Prisma.StoreUncheckedCreateWithoutSalesOperatorDailyInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutSalesOperatorDailyInput
+  connect?: Prisma.StoreWhereUniqueInput
+}
+
+export type StoreUpdateOneWithoutSalesOperatorDailyNestedInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutSalesOperatorDailyInput, Prisma.StoreUncheckedCreateWithoutSalesOperatorDailyInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutSalesOperatorDailyInput
+  upsert?: Prisma.StoreUpsertWithoutSalesOperatorDailyInput
+  disconnect?: boolean
+  delete?: Prisma.StoreWhereInput | boolean
+  connect?: Prisma.StoreWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StoreUpdateToOneWithWhereWithoutSalesOperatorDailyInput, Prisma.StoreUpdateWithoutSalesOperatorDailyInput>, Prisma.StoreUncheckedUpdateWithoutSalesOperatorDailyInput>
+}
+
+export type StoreCreateNestedOneWithoutCatalogItemDailyInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutCatalogItemDailyInput, Prisma.StoreUncheckedCreateWithoutCatalogItemDailyInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutCatalogItemDailyInput
+  connect?: Prisma.StoreWhereUniqueInput
+}
+
+export type StoreUpdateOneWithoutCatalogItemDailyNestedInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutCatalogItemDailyInput, Prisma.StoreUncheckedCreateWithoutCatalogItemDailyInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutCatalogItemDailyInput
+  upsert?: Prisma.StoreUpsertWithoutCatalogItemDailyInput
+  disconnect?: boolean
+  delete?: Prisma.StoreWhereInput | boolean
+  connect?: Prisma.StoreWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StoreUpdateToOneWithWhereWithoutCatalogItemDailyInput, Prisma.StoreUpdateWithoutCatalogItemDailyInput>, Prisma.StoreUncheckedUpdateWithoutCatalogItemDailyInput>
+}
+
+export type StoreCreateWithoutOperatorsInput = {
   id?: string
-  storeId: string
-  name?: string | null
-  status?: string
-  metadata?: runtime.InputJsonValue | null
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  subgroup?: Prisma.StoreSubgroupCreateNestedOneWithoutStoresInput
-  tenant: Prisma.TenantCreateNestedOneWithoutStoresInput
+  sales?: Prisma.SaleCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyCreateNestedManyWithoutStoreInput
 }
 
-export type StoreUncheckedCreateWithoutGroupInput = {
+export type StoreUncheckedCreateWithoutOperatorsInput = {
   id?: string
-  storeId: string
-  tenantId: string
-  subgroupId?: string | null
-  name?: string | null
-  status?: string
-  metadata?: runtime.InputJsonValue | null
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedCreateNestedManyWithoutStoreInput
 }
 
-export type StoreCreateOrConnectWithoutGroupInput = {
+export type StoreCreateOrConnectWithoutOperatorsInput = {
   where: Prisma.StoreWhereUniqueInput
-  create: Prisma.XOR<Prisma.StoreCreateWithoutGroupInput, Prisma.StoreUncheckedCreateWithoutGroupInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutOperatorsInput, Prisma.StoreUncheckedCreateWithoutOperatorsInput>
 }
 
-export type StoreCreateManyGroupInputEnvelope = {
-  data: Prisma.StoreCreateManyGroupInput | Prisma.StoreCreateManyGroupInput[]
+export type StoreUpsertWithoutOperatorsInput = {
+  update: Prisma.XOR<Prisma.StoreUpdateWithoutOperatorsInput, Prisma.StoreUncheckedUpdateWithoutOperatorsInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutOperatorsInput, Prisma.StoreUncheckedCreateWithoutOperatorsInput>
+  where?: Prisma.StoreWhereInput
 }
 
-export type StoreUpsertWithWhereUniqueWithoutGroupInput = {
-  where: Prisma.StoreWhereUniqueInput
-  update: Prisma.XOR<Prisma.StoreUpdateWithoutGroupInput, Prisma.StoreUncheckedUpdateWithoutGroupInput>
-  create: Prisma.XOR<Prisma.StoreCreateWithoutGroupInput, Prisma.StoreUncheckedCreateWithoutGroupInput>
+export type StoreUpdateToOneWithWhereWithoutOperatorsInput = {
+  where?: Prisma.StoreWhereInput
+  data: Prisma.XOR<Prisma.StoreUpdateWithoutOperatorsInput, Prisma.StoreUncheckedUpdateWithoutOperatorsInput>
 }
 
-export type StoreUpdateWithWhereUniqueWithoutGroupInput = {
-  where: Prisma.StoreWhereUniqueInput
-  data: Prisma.XOR<Prisma.StoreUpdateWithoutGroupInput, Prisma.StoreUncheckedUpdateWithoutGroupInput>
+export type StoreUpdateWithoutOperatorsInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sales?: Prisma.SaleUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUpdateManyWithoutStoreNestedInput
 }
 
-export type StoreUpdateManyWithWhereWithoutGroupInput = {
-  where: Prisma.StoreScalarWhereInput
-  data: Prisma.XOR<Prisma.StoreUpdateManyMutationInput, Prisma.StoreUncheckedUpdateManyWithoutGroupInput>
+export type StoreUncheckedUpdateWithoutOperatorsInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedUpdateManyWithoutStoreNestedInput
 }
 
-export type StoreScalarWhereInput = {
-  AND?: Prisma.StoreScalarWhereInput | Prisma.StoreScalarWhereInput[]
-  OR?: Prisma.StoreScalarWhereInput[]
-  NOT?: Prisma.StoreScalarWhereInput | Prisma.StoreScalarWhereInput[]
-  id?: Prisma.StringFilter<"Store"> | string
-  storeId?: Prisma.StringFilter<"Store"> | string
-  tenantId?: Prisma.StringFilter<"Store"> | string
-  groupId?: Prisma.StringFilter<"Store"> | string
-  subgroupId?: Prisma.StringNullableFilter<"Store"> | string | null
-  name?: Prisma.StringNullableFilter<"Store"> | string | null
-  status?: Prisma.StringFilter<"Store"> | string
-  metadata?: Prisma.JsonNullableFilter<"Store">
-  createdAt?: Prisma.DateTimeFilter<"Store"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Store"> | Date | string
-}
-
-export type StoreCreateWithoutSubgroupInput = {
+export type StoreCreateWithoutSalesInput = {
   id?: string
-  storeId: string
-  name?: string | null
-  status?: string
-  metadata?: runtime.InputJsonValue | null
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  group: Prisma.StoreGroupCreateNestedOneWithoutStoresInput
-  tenant: Prisma.TenantCreateNestedOneWithoutStoresInput
+  operators?: Prisma.OperatorCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyCreateNestedManyWithoutStoreInput
 }
 
-export type StoreUncheckedCreateWithoutSubgroupInput = {
+export type StoreUncheckedCreateWithoutSalesInput = {
   id?: string
-  storeId: string
-  tenantId: string
-  groupId: string
-  name?: string | null
-  status?: string
-  metadata?: runtime.InputJsonValue | null
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  operators?: Prisma.OperatorUncheckedCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedCreateNestedManyWithoutStoreInput
 }
 
-export type StoreCreateOrConnectWithoutSubgroupInput = {
+export type StoreCreateOrConnectWithoutSalesInput = {
   where: Prisma.StoreWhereUniqueInput
-  create: Prisma.XOR<Prisma.StoreCreateWithoutSubgroupInput, Prisma.StoreUncheckedCreateWithoutSubgroupInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutSalesInput, Prisma.StoreUncheckedCreateWithoutSalesInput>
 }
 
-export type StoreCreateManySubgroupInputEnvelope = {
-  data: Prisma.StoreCreateManySubgroupInput | Prisma.StoreCreateManySubgroupInput[]
+export type StoreUpsertWithoutSalesInput = {
+  update: Prisma.XOR<Prisma.StoreUpdateWithoutSalesInput, Prisma.StoreUncheckedUpdateWithoutSalesInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutSalesInput, Prisma.StoreUncheckedCreateWithoutSalesInput>
+  where?: Prisma.StoreWhereInput
 }
 
-export type StoreUpsertWithWhereUniqueWithoutSubgroupInput = {
-  where: Prisma.StoreWhereUniqueInput
-  update: Prisma.XOR<Prisma.StoreUpdateWithoutSubgroupInput, Prisma.StoreUncheckedUpdateWithoutSubgroupInput>
-  create: Prisma.XOR<Prisma.StoreCreateWithoutSubgroupInput, Prisma.StoreUncheckedCreateWithoutSubgroupInput>
+export type StoreUpdateToOneWithWhereWithoutSalesInput = {
+  where?: Prisma.StoreWhereInput
+  data: Prisma.XOR<Prisma.StoreUpdateWithoutSalesInput, Prisma.StoreUncheckedUpdateWithoutSalesInput>
 }
 
-export type StoreUpdateWithWhereUniqueWithoutSubgroupInput = {
-  where: Prisma.StoreWhereUniqueInput
-  data: Prisma.XOR<Prisma.StoreUpdateWithoutSubgroupInput, Prisma.StoreUncheckedUpdateWithoutSubgroupInput>
+export type StoreUpdateWithoutSalesInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operators?: Prisma.OperatorUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUpdateManyWithoutStoreNestedInput
 }
 
-export type StoreUpdateManyWithWhereWithoutSubgroupInput = {
-  where: Prisma.StoreScalarWhereInput
-  data: Prisma.XOR<Prisma.StoreUpdateManyMutationInput, Prisma.StoreUncheckedUpdateManyWithoutSubgroupInput>
+export type StoreUncheckedUpdateWithoutSalesInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operators?: Prisma.OperatorUncheckedUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedUpdateManyWithoutStoreNestedInput
 }
 
-export type StoreCreateWithoutTenantInput = {
+export type StoreCreateWithoutOverviewDailyMetricsInput = {
   id?: string
-  storeId: string
-  name?: string | null
-  status?: string
-  metadata?: runtime.InputJsonValue | null
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  group: Prisma.StoreGroupCreateNestedOneWithoutStoresInput
-  subgroup?: Prisma.StoreSubgroupCreateNestedOneWithoutStoresInput
+  operators?: Prisma.OperatorCreateNestedManyWithoutStoreInput
+  sales?: Prisma.SaleCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyCreateNestedManyWithoutStoreInput
 }
 
-export type StoreUncheckedCreateWithoutTenantInput = {
+export type StoreUncheckedCreateWithoutOverviewDailyMetricsInput = {
   id?: string
-  storeId: string
-  groupId: string
-  subgroupId?: string | null
-  name?: string | null
-  status?: string
-  metadata?: runtime.InputJsonValue | null
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  operators?: Prisma.OperatorUncheckedCreateNestedManyWithoutStoreInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedCreateNestedManyWithoutStoreInput
 }
 
-export type StoreCreateOrConnectWithoutTenantInput = {
+export type StoreCreateOrConnectWithoutOverviewDailyMetricsInput = {
   where: Prisma.StoreWhereUniqueInput
-  create: Prisma.XOR<Prisma.StoreCreateWithoutTenantInput, Prisma.StoreUncheckedCreateWithoutTenantInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutOverviewDailyMetricsInput, Prisma.StoreUncheckedCreateWithoutOverviewDailyMetricsInput>
 }
 
-export type StoreCreateManyTenantInputEnvelope = {
-  data: Prisma.StoreCreateManyTenantInput | Prisma.StoreCreateManyTenantInput[]
+export type StoreUpsertWithoutOverviewDailyMetricsInput = {
+  update: Prisma.XOR<Prisma.StoreUpdateWithoutOverviewDailyMetricsInput, Prisma.StoreUncheckedUpdateWithoutOverviewDailyMetricsInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutOverviewDailyMetricsInput, Prisma.StoreUncheckedCreateWithoutOverviewDailyMetricsInput>
+  where?: Prisma.StoreWhereInput
 }
 
-export type StoreUpsertWithWhereUniqueWithoutTenantInput = {
+export type StoreUpdateToOneWithWhereWithoutOverviewDailyMetricsInput = {
+  where?: Prisma.StoreWhereInput
+  data: Prisma.XOR<Prisma.StoreUpdateWithoutOverviewDailyMetricsInput, Prisma.StoreUncheckedUpdateWithoutOverviewDailyMetricsInput>
+}
+
+export type StoreUpdateWithoutOverviewDailyMetricsInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operators?: Prisma.OperatorUpdateManyWithoutStoreNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUpdateManyWithoutStoreNestedInput
+}
+
+export type StoreUncheckedUpdateWithoutOverviewDailyMetricsInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operators?: Prisma.OperatorUncheckedUpdateManyWithoutStoreNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedUpdateManyWithoutStoreNestedInput
+}
+
+export type StoreCreateWithoutOverviewRollupsInput = {
+  id?: string
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  operators?: Prisma.OperatorCreateNestedManyWithoutStoreInput
+  sales?: Prisma.SaleCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyCreateNestedManyWithoutStoreInput
+}
+
+export type StoreUncheckedCreateWithoutOverviewRollupsInput = {
+  id?: string
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  operators?: Prisma.OperatorUncheckedCreateNestedManyWithoutStoreInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedCreateNestedManyWithoutStoreInput
+}
+
+export type StoreCreateOrConnectWithoutOverviewRollupsInput = {
   where: Prisma.StoreWhereUniqueInput
-  update: Prisma.XOR<Prisma.StoreUpdateWithoutTenantInput, Prisma.StoreUncheckedUpdateWithoutTenantInput>
-  create: Prisma.XOR<Prisma.StoreCreateWithoutTenantInput, Prisma.StoreUncheckedCreateWithoutTenantInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutOverviewRollupsInput, Prisma.StoreUncheckedCreateWithoutOverviewRollupsInput>
 }
 
-export type StoreUpdateWithWhereUniqueWithoutTenantInput = {
+export type StoreUpsertWithoutOverviewRollupsInput = {
+  update: Prisma.XOR<Prisma.StoreUpdateWithoutOverviewRollupsInput, Prisma.StoreUncheckedUpdateWithoutOverviewRollupsInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutOverviewRollupsInput, Prisma.StoreUncheckedCreateWithoutOverviewRollupsInput>
+  where?: Prisma.StoreWhereInput
+}
+
+export type StoreUpdateToOneWithWhereWithoutOverviewRollupsInput = {
+  where?: Prisma.StoreWhereInput
+  data: Prisma.XOR<Prisma.StoreUpdateWithoutOverviewRollupsInput, Prisma.StoreUncheckedUpdateWithoutOverviewRollupsInput>
+}
+
+export type StoreUpdateWithoutOverviewRollupsInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operators?: Prisma.OperatorUpdateManyWithoutStoreNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUpdateManyWithoutStoreNestedInput
+}
+
+export type StoreUncheckedUpdateWithoutOverviewRollupsInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operators?: Prisma.OperatorUncheckedUpdateManyWithoutStoreNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedUpdateManyWithoutStoreNestedInput
+}
+
+export type StoreCreateWithoutSalesStoreDailyInput = {
+  id?: string
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  operators?: Prisma.OperatorCreateNestedManyWithoutStoreInput
+  sales?: Prisma.SaleCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyCreateNestedManyWithoutStoreInput
+}
+
+export type StoreUncheckedCreateWithoutSalesStoreDailyInput = {
+  id?: string
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  operators?: Prisma.OperatorUncheckedCreateNestedManyWithoutStoreInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedCreateNestedManyWithoutStoreInput
+}
+
+export type StoreCreateOrConnectWithoutSalesStoreDailyInput = {
   where: Prisma.StoreWhereUniqueInput
-  data: Prisma.XOR<Prisma.StoreUpdateWithoutTenantInput, Prisma.StoreUncheckedUpdateWithoutTenantInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutSalesStoreDailyInput, Prisma.StoreUncheckedCreateWithoutSalesStoreDailyInput>
 }
 
-export type StoreUpdateManyWithWhereWithoutTenantInput = {
-  where: Prisma.StoreScalarWhereInput
-  data: Prisma.XOR<Prisma.StoreUpdateManyMutationInput, Prisma.StoreUncheckedUpdateManyWithoutTenantInput>
+export type StoreUpsertWithoutSalesStoreDailyInput = {
+  update: Prisma.XOR<Prisma.StoreUpdateWithoutSalesStoreDailyInput, Prisma.StoreUncheckedUpdateWithoutSalesStoreDailyInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutSalesStoreDailyInput, Prisma.StoreUncheckedCreateWithoutSalesStoreDailyInput>
+  where?: Prisma.StoreWhereInput
 }
 
-export type StoreCreateManyGroupInput = {
+export type StoreUpdateToOneWithWhereWithoutSalesStoreDailyInput = {
+  where?: Prisma.StoreWhereInput
+  data: Prisma.XOR<Prisma.StoreUpdateWithoutSalesStoreDailyInput, Prisma.StoreUncheckedUpdateWithoutSalesStoreDailyInput>
+}
+
+export type StoreUpdateWithoutSalesStoreDailyInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operators?: Prisma.OperatorUpdateManyWithoutStoreNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUpdateManyWithoutStoreNestedInput
+}
+
+export type StoreUncheckedUpdateWithoutSalesStoreDailyInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operators?: Prisma.OperatorUncheckedUpdateManyWithoutStoreNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedUpdateManyWithoutStoreNestedInput
+}
+
+export type StoreCreateWithoutSalesOperatorDailyInput = {
   id?: string
-  storeId: string
-  tenantId: string
-  subgroupId?: string | null
-  name?: string | null
-  status?: string
-  metadata?: runtime.InputJsonValue | null
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  operators?: Prisma.OperatorCreateNestedManyWithoutStoreInput
+  sales?: Prisma.SaleCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyCreateNestedManyWithoutStoreInput
 }
 
-export type StoreUpdateWithoutGroupInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  subgroup?: Prisma.StoreSubgroupUpdateOneWithoutStoresNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutStoresNestedInput
-}
-
-export type StoreUncheckedUpdateWithoutGroupInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  subgroupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type StoreUncheckedUpdateManyWithoutGroupInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  subgroupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type StoreCreateManySubgroupInput = {
+export type StoreUncheckedCreateWithoutSalesOperatorDailyInput = {
   id?: string
-  storeId: string
-  tenantId: string
-  groupId: string
-  name?: string | null
-  status?: string
-  metadata?: runtime.InputJsonValue | null
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  operators?: Prisma.OperatorUncheckedCreateNestedManyWithoutStoreInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedCreateNestedManyWithoutStoreInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedCreateNestedManyWithoutStoreInput
 }
 
-export type StoreUpdateWithoutSubgroupInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
+export type StoreCreateOrConnectWithoutSalesOperatorDailyInput = {
+  where: Prisma.StoreWhereUniqueInput
+  create: Prisma.XOR<Prisma.StoreCreateWithoutSalesOperatorDailyInput, Prisma.StoreUncheckedCreateWithoutSalesOperatorDailyInput>
+}
+
+export type StoreUpsertWithoutSalesOperatorDailyInput = {
+  update: Prisma.XOR<Prisma.StoreUpdateWithoutSalesOperatorDailyInput, Prisma.StoreUncheckedUpdateWithoutSalesOperatorDailyInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutSalesOperatorDailyInput, Prisma.StoreUncheckedCreateWithoutSalesOperatorDailyInput>
+  where?: Prisma.StoreWhereInput
+}
+
+export type StoreUpdateToOneWithWhereWithoutSalesOperatorDailyInput = {
+  where?: Prisma.StoreWhereInput
+  data: Prisma.XOR<Prisma.StoreUpdateWithoutSalesOperatorDailyInput, Prisma.StoreUncheckedUpdateWithoutSalesOperatorDailyInput>
+}
+
+export type StoreUpdateWithoutSalesOperatorDailyInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  group?: Prisma.StoreGroupUpdateOneRequiredWithoutStoresNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutStoresNestedInput
+  operators?: Prisma.OperatorUpdateManyWithoutStoreNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUpdateManyWithoutStoreNestedInput
 }
 
-export type StoreUncheckedUpdateWithoutSubgroupInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  groupId?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
+export type StoreUncheckedUpdateWithoutSalesOperatorDailyInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operators?: Prisma.OperatorUncheckedUpdateManyWithoutStoreNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedUpdateManyWithoutStoreNestedInput
+  catalogItemDaily?: Prisma.CatalogItemDailyUncheckedUpdateManyWithoutStoreNestedInput
 }
 
-export type StoreUncheckedUpdateManyWithoutSubgroupInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  groupId?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type StoreCreateManyTenantInput = {
+export type StoreCreateWithoutCatalogItemDailyInput = {
   id?: string
-  storeId: string
-  groupId: string
-  subgroupId?: string | null
-  name?: string | null
-  status?: string
-  metadata?: runtime.InputJsonValue | null
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  operators?: Prisma.OperatorCreateNestedManyWithoutStoreInput
+  sales?: Prisma.SaleCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyCreateNestedManyWithoutStoreInput
 }
 
-export type StoreUpdateWithoutTenantInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
+export type StoreUncheckedCreateWithoutCatalogItemDailyInput = {
+  id?: string
+  code: string
+  name: string
+  uniqueKey?: string | null
+  timezone?: string
+  address?: string | null
+  city?: string | null
+  region?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  operators?: Prisma.OperatorUncheckedCreateNestedManyWithoutStoreInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutStoreInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedCreateNestedManyWithoutStoreInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedCreateNestedManyWithoutStoreInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedCreateNestedManyWithoutStoreInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedCreateNestedManyWithoutStoreInput
+}
+
+export type StoreCreateOrConnectWithoutCatalogItemDailyInput = {
+  where: Prisma.StoreWhereUniqueInput
+  create: Prisma.XOR<Prisma.StoreCreateWithoutCatalogItemDailyInput, Prisma.StoreUncheckedCreateWithoutCatalogItemDailyInput>
+}
+
+export type StoreUpsertWithoutCatalogItemDailyInput = {
+  update: Prisma.XOR<Prisma.StoreUpdateWithoutCatalogItemDailyInput, Prisma.StoreUncheckedUpdateWithoutCatalogItemDailyInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutCatalogItemDailyInput, Prisma.StoreUncheckedCreateWithoutCatalogItemDailyInput>
+  where?: Prisma.StoreWhereInput
+}
+
+export type StoreUpdateToOneWithWhereWithoutCatalogItemDailyInput = {
+  where?: Prisma.StoreWhereInput
+  data: Prisma.XOR<Prisma.StoreUpdateWithoutCatalogItemDailyInput, Prisma.StoreUncheckedUpdateWithoutCatalogItemDailyInput>
+}
+
+export type StoreUpdateWithoutCatalogItemDailyInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  group?: Prisma.StoreGroupUpdateOneRequiredWithoutStoresNestedInput
-  subgroup?: Prisma.StoreSubgroupUpdateOneWithoutStoresNestedInput
+  operators?: Prisma.OperatorUpdateManyWithoutStoreNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUpdateManyWithoutStoreNestedInput
 }
 
-export type StoreUncheckedUpdateWithoutTenantInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  groupId?: Prisma.StringFieldUpdateOperationsInput | string
-  subgroupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
+export type StoreUncheckedUpdateWithoutCatalogItemDailyInput = {
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  operators?: Prisma.OperatorUncheckedUpdateManyWithoutStoreNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutStoreNestedInput
+  overviewDailyMetrics?: Prisma.OverviewDailyMetricsUncheckedUpdateManyWithoutStoreNestedInput
+  overviewRollups?: Prisma.OverviewRollupUncheckedUpdateManyWithoutStoreNestedInput
+  salesStoreDaily?: Prisma.SalesStoreDailyUncheckedUpdateManyWithoutStoreNestedInput
+  salesOperatorDaily?: Prisma.SalesOperatorDailyUncheckedUpdateManyWithoutStoreNestedInput
 }
 
-export type StoreUncheckedUpdateManyWithoutTenantInput = {
-  storeId?: Prisma.StringFieldUpdateOperationsInput | string
-  groupId?: Prisma.StringFieldUpdateOperationsInput | string
-  subgroupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  metadata?: runtime.InputJsonValue | runtime.InputJsonValue | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+
+/**
+ * Count Type StoreCountOutputType
+ */
+
+export type StoreCountOutputType = {
+  operators: number
+  sales: number
+  overviewDailyMetrics: number
+  overviewRollups: number
+  salesStoreDaily: number
+  salesOperatorDaily: number
+  catalogItemDaily: number
 }
 
+export type StoreCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  operators?: boolean | StoreCountOutputTypeCountOperatorsArgs
+  sales?: boolean | StoreCountOutputTypeCountSalesArgs
+  overviewDailyMetrics?: boolean | StoreCountOutputTypeCountOverviewDailyMetricsArgs
+  overviewRollups?: boolean | StoreCountOutputTypeCountOverviewRollupsArgs
+  salesStoreDaily?: boolean | StoreCountOutputTypeCountSalesStoreDailyArgs
+  salesOperatorDaily?: boolean | StoreCountOutputTypeCountSalesOperatorDailyArgs
+  catalogItemDaily?: boolean | StoreCountOutputTypeCountCatalogItemDailyArgs
+}
+
+/**
+ * StoreCountOutputType without action
+ */
+export type StoreCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StoreCountOutputType
+   */
+  select?: Prisma.StoreCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * StoreCountOutputType without action
+ */
+export type StoreCountOutputTypeCountOperatorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OperatorWhereInput
+}
+
+/**
+ * StoreCountOutputType without action
+ */
+export type StoreCountOutputTypeCountSalesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SaleWhereInput
+}
+
+/**
+ * StoreCountOutputType without action
+ */
+export type StoreCountOutputTypeCountOverviewDailyMetricsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OverviewDailyMetricsWhereInput
+}
+
+/**
+ * StoreCountOutputType without action
+ */
+export type StoreCountOutputTypeCountOverviewRollupsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OverviewRollupWhereInput
+}
+
+/**
+ * StoreCountOutputType without action
+ */
+export type StoreCountOutputTypeCountSalesStoreDailyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SalesStoreDailyWhereInput
+}
+
+/**
+ * StoreCountOutputType without action
+ */
+export type StoreCountOutputTypeCountSalesOperatorDailyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SalesOperatorDailyWhereInput
+}
+
+/**
+ * StoreCountOutputType without action
+ */
+export type StoreCountOutputTypeCountCatalogItemDailyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CatalogItemDailyWhereInput
+}
 
 
 export type StoreSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  storeId?: boolean
-  tenantId?: boolean
-  groupId?: boolean
-  subgroupId?: boolean
+  code?: boolean
   name?: boolean
-  status?: boolean
-  metadata?: boolean
+  uniqueKey?: boolean
+  timezone?: boolean
+  address?: boolean
+  city?: boolean
+  region?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  group?: boolean | Prisma.StoreGroupDefaultArgs<ExtArgs>
-  subgroup?: boolean | Prisma.Store$subgroupArgs<ExtArgs>
-  tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  operators?: boolean | Prisma.Store$operatorsArgs<ExtArgs>
+  sales?: boolean | Prisma.Store$salesArgs<ExtArgs>
+  overviewDailyMetrics?: boolean | Prisma.Store$overviewDailyMetricsArgs<ExtArgs>
+  overviewRollups?: boolean | Prisma.Store$overviewRollupsArgs<ExtArgs>
+  salesStoreDaily?: boolean | Prisma.Store$salesStoreDailyArgs<ExtArgs>
+  salesOperatorDaily?: boolean | Prisma.Store$salesOperatorDailyArgs<ExtArgs>
+  catalogItemDaily?: boolean | Prisma.Store$catalogItemDailyArgs<ExtArgs>
+  _count?: boolean | Prisma.StoreCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["store"]>
 
 
 
 export type StoreSelectScalar = {
   id?: boolean
-  storeId?: boolean
-  tenantId?: boolean
-  groupId?: boolean
-  subgroupId?: boolean
+  code?: boolean
   name?: boolean
-  status?: boolean
-  metadata?: boolean
+  uniqueKey?: boolean
+  timezone?: boolean
+  address?: boolean
+  city?: boolean
+  region?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type StoreOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "storeId" | "tenantId" | "groupId" | "subgroupId" | "name" | "status" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["store"]>
+export type StoreOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "name" | "uniqueKey" | "timezone" | "address" | "city" | "region" | "createdAt" | "updatedAt", ExtArgs["result"]["store"]>
 export type StoreInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  group?: boolean | Prisma.StoreGroupDefaultArgs<ExtArgs>
-  subgroup?: boolean | Prisma.Store$subgroupArgs<ExtArgs>
-  tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  operators?: boolean | Prisma.Store$operatorsArgs<ExtArgs>
+  sales?: boolean | Prisma.Store$salesArgs<ExtArgs>
+  overviewDailyMetrics?: boolean | Prisma.Store$overviewDailyMetricsArgs<ExtArgs>
+  overviewRollups?: boolean | Prisma.Store$overviewRollupsArgs<ExtArgs>
+  salesStoreDaily?: boolean | Prisma.Store$salesStoreDailyArgs<ExtArgs>
+  salesOperatorDaily?: boolean | Prisma.Store$salesOperatorDailyArgs<ExtArgs>
+  catalogItemDaily?: boolean | Prisma.Store$catalogItemDailyArgs<ExtArgs>
+  _count?: boolean | Prisma.StoreCountOutputTypeDefaultArgs<ExtArgs>
 }
 
 export type $StorePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Store"
   objects: {
-    group: Prisma.$StoreGroupPayload<ExtArgs>
-    subgroup: Prisma.$StoreSubgroupPayload<ExtArgs> | null
-    tenant: Prisma.$TenantPayload<ExtArgs>
+    operators: Prisma.$OperatorPayload<ExtArgs>[]
+    sales: Prisma.$SalePayload<ExtArgs>[]
+    overviewDailyMetrics: Prisma.$OverviewDailyMetricsPayload<ExtArgs>[]
+    overviewRollups: Prisma.$OverviewRollupPayload<ExtArgs>[]
+    salesStoreDaily: Prisma.$SalesStoreDailyPayload<ExtArgs>[]
+    salesOperatorDaily: Prisma.$SalesOperatorDailyPayload<ExtArgs>[]
+    catalogItemDaily: Prisma.$CatalogItemDailyPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    storeId: string
-    tenantId: string
-    groupId: string
-    subgroupId: string | null
-    name: string | null
-    status: string
-    metadata: runtime.JsonValue | null
+    code: string
+    name: string
+    uniqueKey: string | null
+    timezone: string
+    address: string | null
+    city: string | null
+    region: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["store"]>
@@ -1272,9 +1735,13 @@ readonly fields: StoreFieldRefs;
  */
 export interface Prisma__StoreClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  group<T extends Prisma.StoreGroupDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StoreGroupDefaultArgs<ExtArgs>>): Prisma.Prisma__StoreGroupClient<runtime.Types.Result.GetResult<Prisma.$StoreGroupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  subgroup<T extends Prisma.Store$subgroupArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Store$subgroupArgs<ExtArgs>>): Prisma.Prisma__StoreSubgroupClient<runtime.Types.Result.GetResult<Prisma.$StoreSubgroupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  tenant<T extends Prisma.TenantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantDefaultArgs<ExtArgs>>): Prisma.Prisma__TenantClient<runtime.Types.Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  operators<T extends Prisma.Store$operatorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Store$operatorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OperatorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sales<T extends Prisma.Store$salesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Store$salesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  overviewDailyMetrics<T extends Prisma.Store$overviewDailyMetricsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Store$overviewDailyMetricsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OverviewDailyMetricsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  overviewRollups<T extends Prisma.Store$overviewRollupsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Store$overviewRollupsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OverviewRollupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  salesStoreDaily<T extends Prisma.Store$salesStoreDailyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Store$salesStoreDailyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalesStoreDailyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  salesOperatorDaily<T extends Prisma.Store$salesOperatorDailyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Store$salesOperatorDailyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalesOperatorDailyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  catalogItemDaily<T extends Prisma.Store$catalogItemDailyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Store$catalogItemDailyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CatalogItemDailyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1305,13 +1772,13 @@ export interface Prisma__StoreClient<T, Null = never, ExtArgs extends runtime.Ty
  */
 export interface StoreFieldRefs {
   readonly id: Prisma.FieldRef<"Store", 'String'>
-  readonly storeId: Prisma.FieldRef<"Store", 'String'>
-  readonly tenantId: Prisma.FieldRef<"Store", 'String'>
-  readonly groupId: Prisma.FieldRef<"Store", 'String'>
-  readonly subgroupId: Prisma.FieldRef<"Store", 'String'>
+  readonly code: Prisma.FieldRef<"Store", 'String'>
   readonly name: Prisma.FieldRef<"Store", 'String'>
-  readonly status: Prisma.FieldRef<"Store", 'String'>
-  readonly metadata: Prisma.FieldRef<"Store", 'Json'>
+  readonly uniqueKey: Prisma.FieldRef<"Store", 'String'>
+  readonly timezone: Prisma.FieldRef<"Store", 'String'>
+  readonly address: Prisma.FieldRef<"Store", 'String'>
+  readonly city: Prisma.FieldRef<"Store", 'String'>
+  readonly region: Prisma.FieldRef<"Store", 'String'>
   readonly createdAt: Prisma.FieldRef<"Store", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Store", 'DateTime'>
 }
@@ -1684,22 +2151,171 @@ export type StoreAggregateRawArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Store.subgroup
+ * Store.operators
  */
-export type Store$subgroupArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Store$operatorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the StoreSubgroup
+   * Select specific fields to fetch from the Operator
    */
-  select?: Prisma.StoreSubgroupSelect<ExtArgs> | null
+  select?: Prisma.OperatorSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the StoreSubgroup
+   * Omit specific fields from the Operator
    */
-  omit?: Prisma.StoreSubgroupOmit<ExtArgs> | null
+  omit?: Prisma.OperatorOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.StoreSubgroupInclude<ExtArgs> | null
-  where?: Prisma.StoreSubgroupWhereInput
+  include?: Prisma.OperatorInclude<ExtArgs> | null
+  where?: Prisma.OperatorWhereInput
+  orderBy?: Prisma.OperatorOrderByWithRelationInput | Prisma.OperatorOrderByWithRelationInput[]
+  cursor?: Prisma.OperatorWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OperatorScalarFieldEnum | Prisma.OperatorScalarFieldEnum[]
+}
+
+/**
+ * Store.sales
+ */
+export type Store$salesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Sale
+   */
+  select?: Prisma.SaleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Sale
+   */
+  omit?: Prisma.SaleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SaleInclude<ExtArgs> | null
+  where?: Prisma.SaleWhereInput
+  orderBy?: Prisma.SaleOrderByWithRelationInput | Prisma.SaleOrderByWithRelationInput[]
+  cursor?: Prisma.SaleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SaleScalarFieldEnum | Prisma.SaleScalarFieldEnum[]
+}
+
+/**
+ * Store.overviewDailyMetrics
+ */
+export type Store$overviewDailyMetricsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OverviewDailyMetrics
+   */
+  select?: Prisma.OverviewDailyMetricsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OverviewDailyMetrics
+   */
+  omit?: Prisma.OverviewDailyMetricsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OverviewDailyMetricsInclude<ExtArgs> | null
+  where?: Prisma.OverviewDailyMetricsWhereInput
+  orderBy?: Prisma.OverviewDailyMetricsOrderByWithRelationInput | Prisma.OverviewDailyMetricsOrderByWithRelationInput[]
+  cursor?: Prisma.OverviewDailyMetricsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OverviewDailyMetricsScalarFieldEnum | Prisma.OverviewDailyMetricsScalarFieldEnum[]
+}
+
+/**
+ * Store.overviewRollups
+ */
+export type Store$overviewRollupsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OverviewRollup
+   */
+  select?: Prisma.OverviewRollupSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OverviewRollup
+   */
+  omit?: Prisma.OverviewRollupOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OverviewRollupInclude<ExtArgs> | null
+  where?: Prisma.OverviewRollupWhereInput
+  orderBy?: Prisma.OverviewRollupOrderByWithRelationInput | Prisma.OverviewRollupOrderByWithRelationInput[]
+  cursor?: Prisma.OverviewRollupWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OverviewRollupScalarFieldEnum | Prisma.OverviewRollupScalarFieldEnum[]
+}
+
+/**
+ * Store.salesStoreDaily
+ */
+export type Store$salesStoreDailyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SalesStoreDaily
+   */
+  select?: Prisma.SalesStoreDailySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SalesStoreDaily
+   */
+  omit?: Prisma.SalesStoreDailyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SalesStoreDailyInclude<ExtArgs> | null
+  where?: Prisma.SalesStoreDailyWhereInput
+  orderBy?: Prisma.SalesStoreDailyOrderByWithRelationInput | Prisma.SalesStoreDailyOrderByWithRelationInput[]
+  cursor?: Prisma.SalesStoreDailyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SalesStoreDailyScalarFieldEnum | Prisma.SalesStoreDailyScalarFieldEnum[]
+}
+
+/**
+ * Store.salesOperatorDaily
+ */
+export type Store$salesOperatorDailyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SalesOperatorDaily
+   */
+  select?: Prisma.SalesOperatorDailySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SalesOperatorDaily
+   */
+  omit?: Prisma.SalesOperatorDailyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SalesOperatorDailyInclude<ExtArgs> | null
+  where?: Prisma.SalesOperatorDailyWhereInput
+  orderBy?: Prisma.SalesOperatorDailyOrderByWithRelationInput | Prisma.SalesOperatorDailyOrderByWithRelationInput[]
+  cursor?: Prisma.SalesOperatorDailyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SalesOperatorDailyScalarFieldEnum | Prisma.SalesOperatorDailyScalarFieldEnum[]
+}
+
+/**
+ * Store.catalogItemDaily
+ */
+export type Store$catalogItemDailyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CatalogItemDaily
+   */
+  select?: Prisma.CatalogItemDailySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CatalogItemDaily
+   */
+  omit?: Prisma.CatalogItemDailyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CatalogItemDailyInclude<ExtArgs> | null
+  where?: Prisma.CatalogItemDailyWhereInput
+  orderBy?: Prisma.CatalogItemDailyOrderByWithRelationInput | Prisma.CatalogItemDailyOrderByWithRelationInput[]
+  cursor?: Prisma.CatalogItemDailyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CatalogItemDailyScalarFieldEnum | Prisma.CatalogItemDailyScalarFieldEnum[]
 }
 
 /**

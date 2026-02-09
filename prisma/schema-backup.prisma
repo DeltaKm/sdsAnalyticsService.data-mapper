@@ -249,29 +249,3 @@ model CatalogItemDaily {
   @@map("catalog_item_daily")
 }
 
-// Data-mapper specific tables
-enum IngressSource {
-  POS
-  ERP
-}
-
-model IngressEvent {
-  id          String        @id @default(auto()) @map("_id") @db.ObjectId
-  source      IngressSource
-  payload     Json
-  processedAt DateTime?     @map("processed_at")
-  createdAt   DateTime      @default(now())
-
-  @@index([source, createdAt])
-  @@index([processedAt])
-  @@map("ingress_events")
-}
-
-model IdempotencyKey {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  key       String   @unique
-  createdAt DateTime @default(now())
-
-  @@map("idempotency_keys")
-}
-

@@ -27,12 +27,14 @@ export type AggregateIngressEvent = {
 export type IngressEventMinAggregateOutputType = {
   id: string | null
   source: $Enums.IngressSource | null
+  processedAt: Date | null
   createdAt: Date | null
 }
 
 export type IngressEventMaxAggregateOutputType = {
   id: string | null
   source: $Enums.IngressSource | null
+  processedAt: Date | null
   createdAt: Date | null
 }
 
@@ -40,6 +42,7 @@ export type IngressEventCountAggregateOutputType = {
   id: number
   source: number
   payload: number
+  processedAt: number
   createdAt: number
   _all: number
 }
@@ -48,12 +51,14 @@ export type IngressEventCountAggregateOutputType = {
 export type IngressEventMinAggregateInputType = {
   id?: true
   source?: true
+  processedAt?: true
   createdAt?: true
 }
 
 export type IngressEventMaxAggregateInputType = {
   id?: true
   source?: true
+  processedAt?: true
   createdAt?: true
 }
 
@@ -61,6 +66,7 @@ export type IngressEventCountAggregateInputType = {
   id?: true
   source?: true
   payload?: true
+  processedAt?: true
   createdAt?: true
   _all?: true
 }
@@ -141,6 +147,7 @@ export type IngressEventGroupByOutputType = {
   id: string
   source: $Enums.IngressSource
   payload: runtime.JsonValue
+  processedAt: Date | null
   createdAt: Date
   _count: IngressEventCountAggregateOutputType | null
   _min: IngressEventMinAggregateOutputType | null
@@ -169,6 +176,7 @@ export type IngressEventWhereInput = {
   id?: Prisma.StringFilter<"IngressEvent"> | string
   source?: Prisma.EnumIngressSourceFilter<"IngressEvent"> | $Enums.IngressSource
   payload?: Prisma.JsonFilter<"IngressEvent">
+  processedAt?: Prisma.DateTimeNullableFilter<"IngressEvent"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"IngressEvent"> | Date | string
 }
 
@@ -176,6 +184,7 @@ export type IngressEventOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   source?: Prisma.SortOrder
   payload?: Prisma.SortOrder
+  processedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -186,6 +195,7 @@ export type IngressEventWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.IngressEventWhereInput | Prisma.IngressEventWhereInput[]
   source?: Prisma.EnumIngressSourceFilter<"IngressEvent"> | $Enums.IngressSource
   payload?: Prisma.JsonFilter<"IngressEvent">
+  processedAt?: Prisma.DateTimeNullableFilter<"IngressEvent"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"IngressEvent"> | Date | string
 }, "id">
 
@@ -193,6 +203,7 @@ export type IngressEventOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   source?: Prisma.SortOrder
   payload?: Prisma.SortOrder
+  processedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.IngressEventCountOrderByAggregateInput
   _max?: Prisma.IngressEventMaxOrderByAggregateInput
@@ -206,6 +217,7 @@ export type IngressEventScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"IngressEvent"> | string
   source?: Prisma.EnumIngressSourceWithAggregatesFilter<"IngressEvent"> | $Enums.IngressSource
   payload?: Prisma.JsonWithAggregatesFilter<"IngressEvent">
+  processedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"IngressEvent"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"IngressEvent"> | Date | string
 }
 
@@ -213,6 +225,7 @@ export type IngressEventCreateInput = {
   id?: string
   source: $Enums.IngressSource
   payload: runtime.InputJsonValue
+  processedAt?: Date | string | null
   createdAt?: Date | string
 }
 
@@ -220,18 +233,21 @@ export type IngressEventUncheckedCreateInput = {
   id?: string
   source: $Enums.IngressSource
   payload: runtime.InputJsonValue
+  processedAt?: Date | string | null
   createdAt?: Date | string
 }
 
 export type IngressEventUpdateInput = {
   source?: Prisma.EnumIngressSourceFieldUpdateOperationsInput | $Enums.IngressSource
   payload?: runtime.InputJsonValue | runtime.InputJsonValue
+  processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type IngressEventUncheckedUpdateInput = {
   source?: Prisma.EnumIngressSourceFieldUpdateOperationsInput | $Enums.IngressSource
   payload?: runtime.InputJsonValue | runtime.InputJsonValue
+  processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -239,18 +255,21 @@ export type IngressEventCreateManyInput = {
   id?: string
   source: $Enums.IngressSource
   payload: runtime.InputJsonValue
+  processedAt?: Date | string | null
   createdAt?: Date | string
 }
 
 export type IngressEventUpdateManyMutationInput = {
   source?: Prisma.EnumIngressSourceFieldUpdateOperationsInput | $Enums.IngressSource
   payload?: runtime.InputJsonValue | runtime.InputJsonValue
+  processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type IngressEventUncheckedUpdateManyInput = {
   source?: Prisma.EnumIngressSourceFieldUpdateOperationsInput | $Enums.IngressSource
   payload?: runtime.InputJsonValue | runtime.InputJsonValue
+  processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -258,18 +277,21 @@ export type IngressEventCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   source?: Prisma.SortOrder
   payload?: Prisma.SortOrder
+  processedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
 export type IngressEventMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   source?: Prisma.SortOrder
+  processedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
 export type IngressEventMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   source?: Prisma.SortOrder
+  processedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -277,8 +299,9 @@ export type EnumIngressSourceFieldUpdateOperationsInput = {
   set?: $Enums.IngressSource
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+  unset?: boolean
 }
 
 
@@ -287,6 +310,7 @@ export type IngressEventSelect<ExtArgs extends runtime.Types.Extensions.Internal
   id?: boolean
   source?: boolean
   payload?: boolean
+  processedAt?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["ingressEvent"]>
 
@@ -296,10 +320,11 @@ export type IngressEventSelectScalar = {
   id?: boolean
   source?: boolean
   payload?: boolean
+  processedAt?: boolean
   createdAt?: boolean
 }
 
-export type IngressEventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "source" | "payload" | "createdAt", ExtArgs["result"]["ingressEvent"]>
+export type IngressEventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "source" | "payload" | "processedAt" | "createdAt", ExtArgs["result"]["ingressEvent"]>
 
 export type $IngressEventPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "IngressEvent"
@@ -308,6 +333,7 @@ export type $IngressEventPayload<ExtArgs extends runtime.Types.Extensions.Intern
     id: string
     source: $Enums.IngressSource
     payload: runtime.JsonValue
+    processedAt: Date | null
     createdAt: Date
   }, ExtArgs["result"]["ingressEvent"]>
   composites: {}
@@ -704,6 +730,7 @@ export interface IngressEventFieldRefs {
   readonly id: Prisma.FieldRef<"IngressEvent", 'String'>
   readonly source: Prisma.FieldRef<"IngressEvent", 'IngressSource'>
   readonly payload: Prisma.FieldRef<"IngressEvent", 'Json'>
+  readonly processedAt: Prisma.FieldRef<"IngressEvent", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"IngressEvent", 'DateTime'>
 }
     

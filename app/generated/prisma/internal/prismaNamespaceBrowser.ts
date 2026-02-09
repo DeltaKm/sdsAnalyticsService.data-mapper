@@ -49,12 +49,19 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 
 
 export const ModelName = {
-  IngressEvent: 'IngressEvent',
-  StoreGroup: 'StoreGroup',
-  StoreSubgroup: 'StoreSubgroup',
   Store: 'Store',
-  Tenant: 'Tenant',
-  BusinessUnit: 'BusinessUnit'
+  Channel: 'Channel',
+  MenuItem: 'MenuItem',
+  Operator: 'Operator',
+  Sale: 'Sale',
+  OverviewDailyMetrics: 'OverviewDailyMetrics',
+  OverviewRollup: 'OverviewRollup',
+  SalesStoreDaily: 'SalesStoreDaily',
+  SalesChannelDaily: 'SalesChannelDaily',
+  SalesOperatorDaily: 'SalesOperatorDaily',
+  CatalogItemDaily: 'CatalogItemDaily',
+  IngressEvent: 'IngressEvent',
+  IdempotencyKey: 'IdempotencyKey'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -63,51 +70,15 @@ export type ModelName = (typeof ModelName)[keyof typeof ModelName]
  * Enums
  */
 
-export const IngressEventScalarFieldEnum = {
-  id: 'id',
-  source: 'source',
-  payload: 'payload',
-  createdAt: 'createdAt'
-} as const
-
-export type IngressEventScalarFieldEnum = (typeof IngressEventScalarFieldEnum)[keyof typeof IngressEventScalarFieldEnum]
-
-
-export const StoreGroupScalarFieldEnum = {
-  id: 'id',
-  groupId: 'groupId',
-  name: 'name',
-  supervisorId: 'supervisorId',
-  metadata: 'metadata',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type StoreGroupScalarFieldEnum = (typeof StoreGroupScalarFieldEnum)[keyof typeof StoreGroupScalarFieldEnum]
-
-
-export const StoreSubgroupScalarFieldEnum = {
-  id: 'id',
-  subgroupId: 'subgroupId',
-  groupId: 'groupId',
-  name: 'name',
-  metadata: 'metadata',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type StoreSubgroupScalarFieldEnum = (typeof StoreSubgroupScalarFieldEnum)[keyof typeof StoreSubgroupScalarFieldEnum]
-
-
 export const StoreScalarFieldEnum = {
   id: 'id',
-  storeId: 'storeId',
-  tenantId: 'tenantId',
-  groupId: 'groupId',
-  subgroupId: 'subgroupId',
+  code: 'code',
   name: 'name',
-  status: 'status',
-  metadata: 'metadata',
+  uniqueKey: 'uniqueKey',
+  timezone: 'timezone',
+  address: 'address',
+  city: 'city',
+  region: 'region',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -115,31 +86,176 @@ export const StoreScalarFieldEnum = {
 export type StoreScalarFieldEnum = (typeof StoreScalarFieldEnum)[keyof typeof StoreScalarFieldEnum]
 
 
-export const TenantScalarFieldEnum = {
+export const ChannelScalarFieldEnum = {
   id: 'id',
-  tenantId: 'tenantId',
+  code: 'code',
   name: 'name',
-  metadata: 'metadata',
+  description: 'description',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type TenantScalarFieldEnum = (typeof TenantScalarFieldEnum)[keyof typeof TenantScalarFieldEnum]
+export type ChannelScalarFieldEnum = (typeof ChannelScalarFieldEnum)[keyof typeof ChannelScalarFieldEnum]
 
 
-export const BusinessUnitScalarFieldEnum = {
+export const MenuItemScalarFieldEnum = {
   id: 'id',
-  uniqueKey: 'uniqueKey',
-  instance: 'instance',
-  corporate: 'corporate',
-  company: 'company',
-  store: 'store',
-  metadata: 'metadata',
+  sku: 'sku',
+  name: 'name',
+  category: 'category',
+  price: 'price',
+  cost: 'cost',
+  isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type BusinessUnitScalarFieldEnum = (typeof BusinessUnitScalarFieldEnum)[keyof typeof BusinessUnitScalarFieldEnum]
+export type MenuItemScalarFieldEnum = (typeof MenuItemScalarFieldEnum)[keyof typeof MenuItemScalarFieldEnum]
+
+
+export const OperatorScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  fullName: 'fullName',
+  role: 'role',
+  storeId: 'storeId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OperatorScalarFieldEnum = (typeof OperatorScalarFieldEnum)[keyof typeof OperatorScalarFieldEnum]
+
+
+export const SaleScalarFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  channelId: 'channelId',
+  operatorId: 'operatorId',
+  businessDate: 'businessDate',
+  timeSlot: 'timeSlot',
+  grossAmount: 'grossAmount',
+  netAmount: 'netAmount',
+  customersCount: 'customersCount',
+  documentType: 'documentType',
+  paymentMethods: 'paymentMethods',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SaleScalarFieldEnum = (typeof SaleScalarFieldEnum)[keyof typeof SaleScalarFieldEnum]
+
+
+export const OverviewDailyMetricsScalarFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  businessDate: 'businessDate',
+  grossAmount: 'grossAmount',
+  netAmount: 'netAmount',
+  salesCount: 'salesCount',
+  avgTicket: 'avgTicket',
+  coversCount: 'coversCount',
+  avgCover: 'avgCover',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OverviewDailyMetricsScalarFieldEnum = (typeof OverviewDailyMetricsScalarFieldEnum)[keyof typeof OverviewDailyMetricsScalarFieldEnum]
+
+
+export const OverviewRollupScalarFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  range: 'range',
+  referenceDate: 'referenceDate',
+  grossAmount: 'grossAmount',
+  netAmount: 'netAmount',
+  salesCount: 'salesCount',
+  avgTicket: 'avgTicket',
+  coversCount: 'coversCount',
+  avgCover: 'avgCover',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OverviewRollupScalarFieldEnum = (typeof OverviewRollupScalarFieldEnum)[keyof typeof OverviewRollupScalarFieldEnum]
+
+
+export const SalesStoreDailyScalarFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  businessDate: 'businessDate',
+  salesCount: 'salesCount',
+  grossAmount: 'grossAmount',
+  avgTicket: 'avgTicket',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SalesStoreDailyScalarFieldEnum = (typeof SalesStoreDailyScalarFieldEnum)[keyof typeof SalesStoreDailyScalarFieldEnum]
+
+
+export const SalesChannelDailyScalarFieldEnum = {
+  id: 'id',
+  channelId: 'channelId',
+  businessDate: 'businessDate',
+  salesCount: 'salesCount',
+  grossAmount: 'grossAmount',
+  avgTicket: 'avgTicket',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SalesChannelDailyScalarFieldEnum = (typeof SalesChannelDailyScalarFieldEnum)[keyof typeof SalesChannelDailyScalarFieldEnum]
+
+
+export const SalesOperatorDailyScalarFieldEnum = {
+  id: 'id',
+  operatorId: 'operatorId',
+  businessDate: 'businessDate',
+  storeId: 'storeId',
+  salesCount: 'salesCount',
+  grossAmount: 'grossAmount',
+  avgTicket: 'avgTicket',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SalesOperatorDailyScalarFieldEnum = (typeof SalesOperatorDailyScalarFieldEnum)[keyof typeof SalesOperatorDailyScalarFieldEnum]
+
+
+export const CatalogItemDailyScalarFieldEnum = {
+  id: 'id',
+  itemId: 'itemId',
+  storeId: 'storeId',
+  businessDate: 'businessDate',
+  quantity: 'quantity',
+  grossAmount: 'grossAmount',
+  avgPrice: 'avgPrice',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CatalogItemDailyScalarFieldEnum = (typeof CatalogItemDailyScalarFieldEnum)[keyof typeof CatalogItemDailyScalarFieldEnum]
+
+
+export const IngressEventScalarFieldEnum = {
+  id: 'id',
+  source: 'source',
+  payload: 'payload',
+  processedAt: 'processedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type IngressEventScalarFieldEnum = (typeof IngressEventScalarFieldEnum)[keyof typeof IngressEventScalarFieldEnum]
+
+
+export const IdempotencyKeyScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  createdAt: 'createdAt'
+} as const
+
+export type IdempotencyKeyScalarFieldEnum = (typeof IdempotencyKeyScalarFieldEnum)[keyof typeof IdempotencyKeyScalarFieldEnum]
 
 
 export const SortOrder = {

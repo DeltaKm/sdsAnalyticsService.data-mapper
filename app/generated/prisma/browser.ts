@@ -18,32 +18,82 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
- * Model IngressEvent
+ * Model SaleItem
  * 
  */
-export type IngressEvent = Prisma.IngressEventModel
+export type SaleItem = Prisma.SaleItemModel
 /**
- * Model StoreGroup
+ * Model TimeSlotMetric
  * 
  */
-export type StoreGroup = Prisma.StoreGroupModel
+export type TimeSlotMetric = Prisma.TimeSlotMetricModel
 /**
- * Model StoreSubgroup
+ * Model DocumentBreakdown
  * 
  */
-export type StoreSubgroup = Prisma.StoreSubgroupModel
+export type DocumentBreakdown = Prisma.DocumentBreakdownModel
 /**
  * Model Store
  * 
  */
 export type Store = Prisma.StoreModel
 /**
- * Model Tenant
+ * Model Channel
  * 
  */
-export type Tenant = Prisma.TenantModel
+export type Channel = Prisma.ChannelModel
 /**
- * Model BusinessUnit
+ * Model MenuItem
  * 
  */
-export type BusinessUnit = Prisma.BusinessUnitModel
+export type MenuItem = Prisma.MenuItemModel
+/**
+ * Model Operator
+ * 
+ */
+export type Operator = Prisma.OperatorModel
+/**
+ * Model Sale
+ * 
+ */
+export type Sale = Prisma.SaleModel
+/**
+ * Model OverviewDailyMetrics
+ * 
+ */
+export type OverviewDailyMetrics = Prisma.OverviewDailyMetricsModel
+/**
+ * Model OverviewRollup
+ * 
+ */
+export type OverviewRollup = Prisma.OverviewRollupModel
+/**
+ * Model SalesStoreDaily
+ * 
+ */
+export type SalesStoreDaily = Prisma.SalesStoreDailyModel
+/**
+ * Model SalesChannelDaily
+ * 
+ */
+export type SalesChannelDaily = Prisma.SalesChannelDailyModel
+/**
+ * Model SalesOperatorDaily
+ * 
+ */
+export type SalesOperatorDaily = Prisma.SalesOperatorDailyModel
+/**
+ * Model CatalogItemDaily
+ * 
+ */
+export type CatalogItemDaily = Prisma.CatalogItemDailyModel
+/**
+ * Model IngressEvent
+ * 
+ */
+export type IngressEvent = Prisma.IngressEventModel
+/**
+ * Model IdempotencyKey
+ * 
+ */
+export type IdempotencyKey = Prisma.IdempotencyKeyModel

@@ -6,12 +6,120 @@ import { prisma } from "@/lib/prisma";
 import { ingressPayloadSchema } from "@/lib/ingress/schemas";
 
 async function persistPayload(source: IngressSource, payload: Prisma.InputJsonValue) {
+  const eventData = payload as any;
+  const idempotencyKey = eventData?.idempotencyKey;
+
+  // Check for duplicate BEFORE creating the event
+  if (idempotencyKey) {
+    const existingKey = await prisma.idempotencyKey.findUnique({ where: { key: idempotencyKey } });
+    if (existingKey) {
+      console.log('🚫 Duplicate idempotencyKey detected:', idempotencyKey);
+      return NextResponse.json(
+        { 
+          error: "DUPLICATE_TRANSACTION",
+          message: "Transaction already processed",
+          idempotencyKey: idempotencyKey,
+          processedAt: existingKey.createdAt
+        },
+        { status: 409 } // Conflict
+      );
+    }
+  }
+
   const record = await prisma.ingressEvent.create({
     data: {
       source,
       payload,
     },
   });
+
+  // Process the event immediately
+  try {
+    console.log("🔄 Processing event immediately:", record.id);
+    
+    const uniqueKey = eventData?.uniqueKey;
+    const businessDate = eventData?.jobDateTime ? new Date(eventData.jobDateTime) : null;
+    const amount = Number(eventData?.amount) || 0;
+    const documentType = eventData?.documentType?.title || 'Sconosciuto';
+    const storeId = eventData?.store?.id;
+
+    if (!idempotencyKey || !uniqueKey || !businessDate || !storeId) {
+      console.warn('Missing required fields for aggregation', { idempotencyKey, uniqueKey, businessDate, storeId });
+    } else {
+      // Store idempotencyKey (we already checked it doesn't exist)
+      await prisma.idempotencyKey.create({ data: { key: idempotencyKey } });
+
+      // Create or update store
+      const store = await prisma.store.upsert({
+        where: { code: String(storeId) },
+        update: { uniqueKey },
+        create: {
+          code: String(storeId),
+          uniqueKey,
+          name: eventData?.store?.title || `Store ${storeId}`,
+          address: eventData?.store?.address,
+          city: eventData?.store?.collective,
+          region: eventData?.store?.province,
+          timezone: 'Europe/Rome',
+        },
+      });
+
+      // Calculate totals from rows
+      const totalAmount = eventData?.rows?.reduce((sum: number, row: any) => {
+        return sum + (row.price * row.quantity);
+      }, 0) || amount;
+
+      const totalNetAmount = totalAmount * 0.9; // Assuming 10% tax
+
+      // Update overview daily metrics
+      await prisma.overviewDailyMetrics.create({
+        data: {
+          businessDate,
+          storeId: store.id,
+          grossAmount: totalAmount,
+          netAmount: totalNetAmount,
+          salesCount: 1,
+          avgTicket: totalAmount,
+          coversCount: eventData?.rows?.length || 1,
+          avgCover: totalAmount / (eventData?.rows?.length || 1),
+          timeSlotBreakdown: [{
+            hour: businessDate.getHours().toString().padStart(2, '0') + ':00',
+            sales: 1,
+            covers: eventData?.rows?.length || 1,
+          }],
+        },
+      });
+
+      // Update sales store daily with document breakdown
+      await prisma.salesStoreDaily.create({
+        data: {
+          businessDate,
+          storeId: store.id,
+          grossAmount: totalAmount,
+          salesCount: 1,
+          avgTicket: totalAmount,
+          documentBreakdown: [{
+            documentType,
+            grossAmount: totalAmount,
+            salesCount: 1,
+          }],
+        },
+      });
+
+      console.log('✅ Event processed and aggregated:', totalAmount + '€');
+    }
+
+    // Mark event as processed
+    await prisma.ingressEvent.update({
+      where: { id: record.id },
+      data: { processedAt: new Date() },
+    });
+    
+    console.log("✅ Event processing completed for:", record.id);
+  } catch (error) {
+    console.error("❌ Event processing failed:", error);
+    // Don't fail the request, just log the error
+  }
 
   return NextResponse.json(
     {

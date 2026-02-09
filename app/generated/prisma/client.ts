@@ -29,8 +29,8 @@ export * from "./enums"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more IngressEvents
- * const ingressEvents = await prisma.ingressEvent.findMany()
+ * // Fetch zero or more Stores
+ * const stores = await prisma.store.findMany()
  * ```
  * 
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
@@ -44,37 +44,83 @@ export { Prisma }
 path.join(__dirname, "libquery_engine-darwin-arm64.dylib.node")
 path.join(process.cwd(), "app/generated/prisma/libquery_engine-darwin-arm64.dylib.node")
 
-// file annotations for bundling tools to include these files
-path.join(__dirname, "libquery_engine-linux-musl-openssl-3.0.x.so.node")
-path.join(process.cwd(), "app/generated/prisma/libquery_engine-linux-musl-openssl-3.0.x.so.node")
-
 /**
- * Model IngressEvent
+ * Model SaleItem
  * 
  */
-export type IngressEvent = Prisma.IngressEventModel
+export type SaleItem = Prisma.SaleItemModel
 /**
- * Model StoreGroup
+ * Model TimeSlotMetric
  * 
  */
-export type StoreGroup = Prisma.StoreGroupModel
+export type TimeSlotMetric = Prisma.TimeSlotMetricModel
 /**
- * Model StoreSubgroup
+ * Model DocumentBreakdown
  * 
  */
-export type StoreSubgroup = Prisma.StoreSubgroupModel
+export type DocumentBreakdown = Prisma.DocumentBreakdownModel
 /**
  * Model Store
  * 
  */
 export type Store = Prisma.StoreModel
 /**
- * Model Tenant
+ * Model Channel
  * 
  */
-export type Tenant = Prisma.TenantModel
+export type Channel = Prisma.ChannelModel
 /**
- * Model BusinessUnit
+ * Model MenuItem
  * 
  */
-export type BusinessUnit = Prisma.BusinessUnitModel
+export type MenuItem = Prisma.MenuItemModel
+/**
+ * Model Operator
+ * 
+ */
+export type Operator = Prisma.OperatorModel
+/**
+ * Model Sale
+ * 
+ */
+export type Sale = Prisma.SaleModel
+/**
+ * Model OverviewDailyMetrics
+ * 
+ */
+export type OverviewDailyMetrics = Prisma.OverviewDailyMetricsModel
+/**
+ * Model OverviewRollup
+ * 
+ */
+export type OverviewRollup = Prisma.OverviewRollupModel
+/**
+ * Model SalesStoreDaily
+ * 
+ */
+export type SalesStoreDaily = Prisma.SalesStoreDailyModel
+/**
+ * Model SalesChannelDaily
+ * 
+ */
+export type SalesChannelDaily = Prisma.SalesChannelDailyModel
+/**
+ * Model SalesOperatorDaily
+ * 
+ */
+export type SalesOperatorDaily = Prisma.SalesOperatorDailyModel
+/**
+ * Model CatalogItemDaily
+ * 
+ */
+export type CatalogItemDaily = Prisma.CatalogItemDailyModel
+/**
+ * Model IngressEvent
+ * 
+ */
+export type IngressEvent = Prisma.IngressEventModel
+/**
+ * Model IdempotencyKey
+ * 
+ */
+export type IdempotencyKey = Prisma.IdempotencyKeyModel
