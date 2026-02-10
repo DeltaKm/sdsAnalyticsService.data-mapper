@@ -3,7 +3,7 @@ import { PrismaClient } from '../app/generated/prisma/client';
 const prisma = new PrismaClient();
 
 async function processPendingEvents() {
-  console.log('🔄 Processing pending events...');
+  console.log('Processing pending events...');
   
   // Get all unprocessed events
   const unprocessed = await prisma.ingressEvent.findMany({
@@ -27,7 +27,7 @@ async function processPendingEvents() {
       const storeId = payload?.store?.id;
 
       if (!idempotencyKey || !uniqueKey || !businessDate || !storeId) {
-        console.warn('  ⚠️ Missing required fields, skipping');
+        console.warn('  Missing required fields, skipping');
         await prisma.ingressEvent.update({
           where: { id: event.id },
           data: { processedAt: new Date() }
@@ -38,7 +38,7 @@ async function processPendingEvents() {
       // Check idempotency
       const existingKey = await prisma.idempotencyKey.findUnique({ where: { key: idempotencyKey } });
       if (existingKey) {
-        console.log('  ⏭️ Duplicate idempotencyKey, skipping');
+        console.log('  Duplicate idempotencyKey, skipping');
         await prisma.ingressEvent.update({
           where: { id: event.id },
           data: { processedAt: new Date() }
@@ -110,14 +110,14 @@ async function processPendingEvents() {
         data: { processedAt: new Date() }
       });
 
-      console.log(`  ✅ Processed: ${totalAmount}€`);
+      console.log(`  Processed: ${totalAmount}€`);
 
     } catch (error) {
-      console.error(`  ❌ Error: ${error.message}`);
+      console.error(`  Error: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
-  console.log('\n✅ Processing completed');
+  console.log('\nProcessing completed');
   
   // Show final stats
   const store = await prisma.store.findFirst({
@@ -131,7 +131,7 @@ async function processPendingEvents() {
       _count: true
     });
     
-    console.log(`\n📊 Final Stats:`);
+    console.log(`\nFinal Stats:`);
     console.log(`- Total records: ${metrics._count}`);
     console.log(`- Total sales: ${metrics._sum.salesCount || 0}`);
     console.log(`- Total amount: ${(metrics._sum.grossAmount || 0)}€`);

@@ -13,7 +13,7 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
   if (idempotencyKey) {
     const existingKey = await prisma.idempotencyKey.findUnique({ where: { key: idempotencyKey } });
     if (existingKey) {
-      console.log('🚫 Duplicate idempotencyKey detected:', idempotencyKey);
+      console.log('Duplicate idempotencyKey detected:', idempotencyKey);
       return NextResponse.json(
         { 
           error: "DUPLICATE_TRANSACTION",
@@ -35,7 +35,7 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
 
   // Process the event immediately
   try {
-    console.log("🔄 Processing event immediately:", record.id);
+    console.log("Processing event immediately:", record.id);
     
     const uniqueKey = eventData?.uniqueKey;
     const businessDate = eventData?.jobDateTime ? new Date(eventData.jobDateTime) : null;
@@ -106,7 +106,7 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
         },
       });
 
-      console.log('✅ Event processed and aggregated:', totalAmount + '€');
+      console.log('Event processed and aggregated:', totalAmount + '€');
     }
 
     // Mark event as processed
@@ -115,9 +115,9 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
       data: { processedAt: new Date() },
     });
     
-    console.log("✅ Event processing completed for:", record.id);
+    console.log("Event processing completed for:", record.id);
   } catch (error) {
-    console.error("❌ Event processing failed:", error);
+    console.error("Event processing failed:", error);
     // Don't fail the request, just log the error
   }
 

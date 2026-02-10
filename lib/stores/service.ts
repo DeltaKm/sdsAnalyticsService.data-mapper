@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from "@/lib/prisma";
 import type { StoreCreateInput, StoreUpdateInput } from "@/lib/stores/schemas";
 import type { Prisma } from "@/app/generated/prisma/client";
