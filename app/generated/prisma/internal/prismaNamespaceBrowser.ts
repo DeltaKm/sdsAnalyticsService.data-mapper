@@ -75,6 +75,8 @@ export const StoreScalarFieldEnum = {
   code: 'code',
   name: 'name',
   uniqueKey: 'uniqueKey',
+  companyName: 'companyName',
+  corporateName: 'corporateName',
   timezone: 'timezone',
   address: 'address',
   city: 'city',

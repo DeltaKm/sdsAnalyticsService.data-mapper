@@ -29,6 +29,8 @@ export type StoreMinAggregateOutputType = {
   code: string | null
   name: string | null
   uniqueKey: string | null
+  companyName: string | null
+  corporateName: string | null
   timezone: string | null
   address: string | null
   city: string | null
@@ -42,6 +44,8 @@ export type StoreMaxAggregateOutputType = {
   code: string | null
   name: string | null
   uniqueKey: string | null
+  companyName: string | null
+  corporateName: string | null
   timezone: string | null
   address: string | null
   city: string | null
@@ -55,6 +59,8 @@ export type StoreCountAggregateOutputType = {
   code: number
   name: number
   uniqueKey: number
+  companyName: number
+  corporateName: number
   timezone: number
   address: number
   city: number
@@ -70,6 +76,8 @@ export type StoreMinAggregateInputType = {
   code?: true
   name?: true
   uniqueKey?: true
+  companyName?: true
+  corporateName?: true
   timezone?: true
   address?: true
   city?: true
@@ -83,6 +91,8 @@ export type StoreMaxAggregateInputType = {
   code?: true
   name?: true
   uniqueKey?: true
+  companyName?: true
+  corporateName?: true
   timezone?: true
   address?: true
   city?: true
@@ -96,6 +106,8 @@ export type StoreCountAggregateInputType = {
   code?: true
   name?: true
   uniqueKey?: true
+  companyName?: true
+  corporateName?: true
   timezone?: true
   address?: true
   city?: true
@@ -182,6 +194,8 @@ export type StoreGroupByOutputType = {
   code: string
   name: string
   uniqueKey: string | null
+  companyName: string | null
+  corporateName: string | null
   timezone: string
   address: string | null
   city: string | null
@@ -216,6 +230,8 @@ export type StoreWhereInput = {
   code?: Prisma.StringFilter<"Store"> | string
   name?: Prisma.StringFilter<"Store"> | string
   uniqueKey?: Prisma.StringNullableFilter<"Store"> | string | null
+  companyName?: Prisma.StringNullableFilter<"Store"> | string | null
+  corporateName?: Prisma.StringNullableFilter<"Store"> | string | null
   timezone?: Prisma.StringFilter<"Store"> | string
   address?: Prisma.StringNullableFilter<"Store"> | string | null
   city?: Prisma.StringNullableFilter<"Store"> | string | null
@@ -236,6 +252,8 @@ export type StoreOrderByWithRelationInput = {
   code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   uniqueKey?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
+  corporateName?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   address?: Prisma.SortOrder
   city?: Prisma.SortOrder
@@ -259,6 +277,8 @@ export type StoreWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.StoreWhereInput | Prisma.StoreWhereInput[]
   name?: Prisma.StringFilter<"Store"> | string
   uniqueKey?: Prisma.StringNullableFilter<"Store"> | string | null
+  companyName?: Prisma.StringNullableFilter<"Store"> | string | null
+  corporateName?: Prisma.StringNullableFilter<"Store"> | string | null
   timezone?: Prisma.StringFilter<"Store"> | string
   address?: Prisma.StringNullableFilter<"Store"> | string | null
   city?: Prisma.StringNullableFilter<"Store"> | string | null
@@ -279,6 +299,8 @@ export type StoreOrderByWithAggregationInput = {
   code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   uniqueKey?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
+  corporateName?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   address?: Prisma.SortOrder
   city?: Prisma.SortOrder
@@ -298,6 +320,8 @@ export type StoreScalarWhereWithAggregatesInput = {
   code?: Prisma.StringWithAggregatesFilter<"Store"> | string
   name?: Prisma.StringWithAggregatesFilter<"Store"> | string
   uniqueKey?: Prisma.StringNullableWithAggregatesFilter<"Store"> | string | null
+  companyName?: Prisma.StringNullableWithAggregatesFilter<"Store"> | string | null
+  corporateName?: Prisma.StringNullableWithAggregatesFilter<"Store"> | string | null
   timezone?: Prisma.StringWithAggregatesFilter<"Store"> | string
   address?: Prisma.StringNullableWithAggregatesFilter<"Store"> | string | null
   city?: Prisma.StringNullableWithAggregatesFilter<"Store"> | string | null
@@ -311,6 +335,8 @@ export type StoreCreateInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -331,6 +357,8 @@ export type StoreUncheckedCreateInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -350,6 +378,8 @@ export type StoreUpdateInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -369,6 +399,8 @@ export type StoreUncheckedUpdateInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -389,6 +421,8 @@ export type StoreCreateManyInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -401,6 +435,8 @@ export type StoreUpdateManyMutationInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -413,6 +449,8 @@ export type StoreUncheckedUpdateManyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -426,6 +464,8 @@ export type StoreCountOrderByAggregateInput = {
   code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   uniqueKey?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
+  corporateName?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   address?: Prisma.SortOrder
   city?: Prisma.SortOrder
@@ -439,6 +479,8 @@ export type StoreMaxOrderByAggregateInput = {
   code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   uniqueKey?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
+  corporateName?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   address?: Prisma.SortOrder
   city?: Prisma.SortOrder
@@ -452,6 +494,8 @@ export type StoreMinOrderByAggregateInput = {
   code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   uniqueKey?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
+  corporateName?: Prisma.SortOrder
   timezone?: Prisma.SortOrder
   address?: Prisma.SortOrder
   city?: Prisma.SortOrder
@@ -592,6 +636,8 @@ export type StoreCreateWithoutOperatorsInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -611,6 +657,8 @@ export type StoreUncheckedCreateWithoutOperatorsInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -645,6 +693,8 @@ export type StoreUpdateWithoutOperatorsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -663,6 +713,8 @@ export type StoreUncheckedUpdateWithoutOperatorsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -682,6 +734,8 @@ export type StoreCreateWithoutSalesInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -701,6 +755,8 @@ export type StoreUncheckedCreateWithoutSalesInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -735,6 +791,8 @@ export type StoreUpdateWithoutSalesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -753,6 +811,8 @@ export type StoreUncheckedUpdateWithoutSalesInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -772,6 +832,8 @@ export type StoreCreateWithoutOverviewDailyMetricsInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -791,6 +853,8 @@ export type StoreUncheckedCreateWithoutOverviewDailyMetricsInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -825,6 +889,8 @@ export type StoreUpdateWithoutOverviewDailyMetricsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -843,6 +909,8 @@ export type StoreUncheckedUpdateWithoutOverviewDailyMetricsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -862,6 +930,8 @@ export type StoreCreateWithoutOverviewRollupsInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -881,6 +951,8 @@ export type StoreUncheckedCreateWithoutOverviewRollupsInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -915,6 +987,8 @@ export type StoreUpdateWithoutOverviewRollupsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -933,6 +1007,8 @@ export type StoreUncheckedUpdateWithoutOverviewRollupsInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -952,6 +1028,8 @@ export type StoreCreateWithoutSalesStoreDailyInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -971,6 +1049,8 @@ export type StoreUncheckedCreateWithoutSalesStoreDailyInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -1005,6 +1085,8 @@ export type StoreUpdateWithoutSalesStoreDailyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1023,6 +1105,8 @@ export type StoreUncheckedUpdateWithoutSalesStoreDailyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1042,6 +1126,8 @@ export type StoreCreateWithoutSalesOperatorDailyInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -1061,6 +1147,8 @@ export type StoreUncheckedCreateWithoutSalesOperatorDailyInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -1095,6 +1183,8 @@ export type StoreUpdateWithoutSalesOperatorDailyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1113,6 +1203,8 @@ export type StoreUncheckedUpdateWithoutSalesOperatorDailyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1132,6 +1224,8 @@ export type StoreCreateWithoutCatalogItemDailyInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -1151,6 +1245,8 @@ export type StoreUncheckedCreateWithoutCatalogItemDailyInput = {
   code: string
   name: string
   uniqueKey?: string | null
+  companyName?: string | null
+  corporateName?: string | null
   timezone?: string
   address?: string | null
   city?: string | null
@@ -1185,6 +1281,8 @@ export type StoreUpdateWithoutCatalogItemDailyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1203,6 +1301,8 @@ export type StoreUncheckedUpdateWithoutCatalogItemDailyInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   uniqueKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  corporateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timezone?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1307,6 +1407,8 @@ export type StoreSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   code?: boolean
   name?: boolean
   uniqueKey?: boolean
+  companyName?: boolean
+  corporateName?: boolean
   timezone?: boolean
   address?: boolean
   city?: boolean
@@ -1330,6 +1432,8 @@ export type StoreSelectScalar = {
   code?: boolean
   name?: boolean
   uniqueKey?: boolean
+  companyName?: boolean
+  corporateName?: boolean
   timezone?: boolean
   address?: boolean
   city?: boolean
@@ -1338,7 +1442,7 @@ export type StoreSelectScalar = {
   updatedAt?: boolean
 }
 
-export type StoreOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "name" | "uniqueKey" | "timezone" | "address" | "city" | "region" | "createdAt" | "updatedAt", ExtArgs["result"]["store"]>
+export type StoreOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "name" | "uniqueKey" | "companyName" | "corporateName" | "timezone" | "address" | "city" | "region" | "createdAt" | "updatedAt", ExtArgs["result"]["store"]>
 export type StoreInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   operators?: boolean | Prisma.Store$operatorsArgs<ExtArgs>
   sales?: boolean | Prisma.Store$salesArgs<ExtArgs>
@@ -1366,6 +1470,8 @@ export type $StorePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     code: string
     name: string
     uniqueKey: string | null
+    companyName: string | null
+    corporateName: string | null
     timezone: string
     address: string | null
     city: string | null
@@ -1775,6 +1881,8 @@ export interface StoreFieldRefs {
   readonly code: Prisma.FieldRef<"Store", 'String'>
   readonly name: Prisma.FieldRef<"Store", 'String'>
   readonly uniqueKey: Prisma.FieldRef<"Store", 'String'>
+  readonly companyName: Prisma.FieldRef<"Store", 'String'>
+  readonly corporateName: Prisma.FieldRef<"Store", 'String'>
   readonly timezone: Prisma.FieldRef<"Store", 'String'>
   readonly address: Prisma.FieldRef<"Store", 'String'>
   readonly city: Prisma.FieldRef<"Store", 'String'>

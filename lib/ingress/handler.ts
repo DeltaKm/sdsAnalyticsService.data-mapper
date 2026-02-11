@@ -52,11 +52,17 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
       // Create or update store
       const store = await prisma.store.upsert({
         where: { code: String(storeId) },
-        update: { uniqueKey },
+        update: { 
+          uniqueKey,
+          companyName: eventData?.company?.title,
+          corporateName: eventData?.corporate?.title,
+        },
         create: {
           code: String(storeId),
           uniqueKey,
           name: eventData?.store?.title || `Store ${storeId}`,
+          companyName: eventData?.company?.title,
+          corporateName: eventData?.corporate?.title,
           address: eventData?.store?.address,
           city: eventData?.store?.collective,
           region: eventData?.store?.province,
