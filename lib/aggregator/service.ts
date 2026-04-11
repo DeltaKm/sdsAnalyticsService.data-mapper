@@ -6,7 +6,7 @@ export async function aggregateSales() {
   const unprocessed = await prisma.ingressEvent.findMany({
     where: { processedAt: null },
     orderBy: { createdAt: 'asc' },
-    take: 500, // batch size
+    take: 500, // b dim
   });
 
   for (const event of unprocessed) {
@@ -17,7 +17,7 @@ export async function aggregateSales() {
       continue;
     }
 
-    // Deduplicate
+    
     const existing = await prisma.idempotencyKey.findUnique({ where: { key: idempotencyKey } });
     if (existing) {
       console.log('Duplicate idempotencyKey, skipping', idempotencyKey);
@@ -28,10 +28,10 @@ export async function aggregateSales() {
       continue;
     }
 
-    // Store idempotencyKey
+
     await prisma.idempotencyKey.create({ data: { key: idempotencyKey } });
 
-    // Extract fields
+ 
     const uniqueKey = payload?.uniqueKey;
     const businessDate = payload?.jobDateTime ? new Date(payload.jobDateTime) : null;
     const amount = Number(payload?.amount) || 0;
@@ -45,7 +45,7 @@ export async function aggregateSales() {
       continue;
     }
 
-    // Create or update store if needed
+    
     const store = await prisma.store.upsert({
       where: { code: String(storeId) },
       update: { uniqueKey },
@@ -60,14 +60,14 @@ export async function aggregateSales() {
       },
     });
 
-    // Calculate totals from rows
+
     const totalAmount = payload?.rows?.reduce((sum: number, row: any) => {
       return sum + (row.price * row.quantity);
     }, 0) || amount;
 
-    const totalNetAmount = totalAmount * 0.9; // Assuming 10% tax
+    const totalNetAmount = totalAmount * 0.9; 
 
-    // Update overview daily metrics
+   
     await prisma.overviewDailyMetrics.upsert({
       where: {
         storeId_businessDate: {
@@ -100,7 +100,7 @@ export async function aggregateSales() {
       },
     });
 
-    // Update sales store daily with document breakdown
+    
     await prisma.salesStoreDaily.upsert({
       where: {
         storeId_businessDate: {
@@ -136,7 +136,7 @@ export async function aggregateSales() {
 
     console.log('Aggregated data for store:', storeId, 'amount:', totalAmount);
 
-    // Mark event as processed
+    
     await prisma.ingressEvent.update({
       where: { id: event.id },
       data: { processedAt: new Date() },

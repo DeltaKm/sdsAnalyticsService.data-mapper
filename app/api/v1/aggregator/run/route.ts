@@ -22,7 +22,6 @@ export async function POST(request: Request) {
   }
 
   try {
-    // Run aggregation in background (fire-and-forget)
     aggregateSales().catch((err) => {
       console.error('Aggregator error:', err);
     });

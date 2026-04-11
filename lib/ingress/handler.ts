@@ -9,7 +9,7 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
   const eventData = payload as any;
   const idempotencyKey = eventData?.idempotencyKey;
 
-  // Check for duplicate BEFORE creating the event
+ 
   if (idempotencyKey) {
     const existingKey = await prisma.idempotencyKey.findUnique({ where: { key: idempotencyKey } });
     if (existingKey) {
@@ -21,7 +21,7 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
           idempotencyKey: idempotencyKey,
           processedAt: existingKey.createdAt
         },
-        { status: 409 } // Conflict
+        { status: 409 } 
       );
     }
   }
@@ -33,7 +33,6 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
     },
   });
 
-  // Process the event immediately
   try {
     console.log("Processing event immediately:", record.id);
     
@@ -46,10 +45,9 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
     if (!idempotencyKey || !uniqueKey || !businessDate || !storeId) {
       console.warn('Missing required fields for aggregation', { idempotencyKey, uniqueKey, businessDate, storeId });
     } else {
-      // Store idempotencyKey (we already checked it doesn't exist)
+     
       await prisma.idempotencyKey.create({ data: { key: idempotencyKey } });
 
-      // Create or update store
       const store = await prisma.store.upsert({
         where: { code: String(storeId) },
         update: { 
@@ -70,14 +68,14 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
         },
       });
 
-      // Calculate totals from rows
+     
       const totalAmount = eventData?.rows?.reduce((sum: number, row: any) => {
         return sum + (row.price * row.quantity);
       }, 0) || amount;
 
-      const totalNetAmount = totalAmount * 0.9; // Assuming 10% tax
+      const totalNetAmount = totalAmount * 0.9; 
 
-      // Update overview daily metrics
+     
       await prisma.overviewDailyMetrics.create({
         data: {
           businessDate,
@@ -96,7 +94,7 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
         },
       });
 
-      // Update sales store daily with document breakdown
+     
       await prisma.salesStoreDaily.create({
         data: {
           businessDate,
@@ -115,7 +113,6 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
       console.log('Event processed and aggregated:', totalAmount + '€');
     }
 
-    // Mark event as processed
     await prisma.ingressEvent.update({
       where: { id: record.id },
       data: { processedAt: new Date() },
@@ -124,7 +121,6 @@ async function persistPayload(source: IngressSource, payload: Prisma.InputJsonVa
     console.log("Event processing completed for:", record.id);
   } catch (error) {
     console.error("Event processing failed:", error);
-    // Don't fail the request, just log the error
   }
 
   return NextResponse.json(

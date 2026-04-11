@@ -14,9 +14,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-/// ------------
-/// Core domain
-/// ------------
 
 model Store {
   id                     String                @id @default(auto()) @map("_id") @db.ObjectId
@@ -116,10 +113,6 @@ type SaleItem {
   unitPrice  Float
   totalPrice Float
 }
-
-/// -------------------
-/// Aggregated datasets
-/// -------------------
 
 model OverviewDailyMetrics {
   id                String            @id @default(auto()) @map("_id") @db.ObjectId
@@ -251,7 +244,6 @@ model CatalogItemDaily {
   @@map("catalog_item_daily")
 }
 
-// Data-mapper specific tables
 enum IngressSource {
   POS
   ERP
@@ -277,3 +269,4 @@ model IdempotencyKey {
   @@map("idempotency_keys")
 }
 
+  

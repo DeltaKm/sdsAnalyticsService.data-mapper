@@ -6,7 +6,6 @@
 /*
  * This is a barrel export file for all models and their related types.
  *
- * 🟢 You can import this file directly.
  */
 export type * from './models/SaleItem'
 export type * from './models/TimeSlotMetric'

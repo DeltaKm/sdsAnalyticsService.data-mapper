@@ -6,7 +6,6 @@
 /*
  * This file exports various common sort, input & filter types that are not directly linked to a particular model.
  *
- * 🟢 You can import this file directly.
  */
 
 import type * as runtime from "@prisma/client/runtime/library"

@@ -5,8 +5,7 @@
 // @ts-nocheck 
 /*
  * WARNING: This is an internal file that is subject to change!
- *
- * 🛑 Under no circumstances should you import this file directly! 🛑
+
  *
  * All exports from this file are wrapped under a `Prisma` namespace object in the client.ts file.
  * While this enables partial backward compatibility, it is not part of the stable public API.
@@ -25,9 +24,7 @@ export type DMMF = typeof runtime.DMMF
 
 export type PrismaPromise<T> = runtime.Types.Public.PrismaPromise<T>
 
-/**
- * Prisma Errors
- */
+
 
 export const PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError
 export type PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError
@@ -44,9 +41,7 @@ export type PrismaClientInitializationError = runtime.PrismaClientInitialization
 export const PrismaClientValidationError = runtime.PrismaClientValidationError
 export type PrismaClientValidationError = runtime.PrismaClientValidationError
 
-/**
- * Re-export of sql-template-tag
- */
+
 export const sql = runtime.sqltag
 export const empty = runtime.empty
 export const join = runtime.join
@@ -56,25 +51,18 @@ export type Sql = runtime.Sql
 
 
 
-/**
- * Decimal.js
- */
 export const Decimal = runtime.Decimal
 export type Decimal = runtime.Decimal
 
 export type DecimalJsLike = runtime.DecimalJsLike
 
-/**
- * Metrics
- */
+
 export type Metrics = runtime.Metrics
 export type Metric<T> = runtime.Metric<T>
 export type MetricHistogram = runtime.MetricHistogram
 export type MetricHistogramBucket = runtime.MetricHistogramBucket
 
-/**
-* Extensions
-*/
+
 export type Extension = runtime.Types.Extensions.UserArgs
 export const getExtensionContext = runtime.Extensions.getExtensionContext
 export type Args<T, F extends runtime.Operation> = runtime.Types.Public.Args<T, F>
@@ -87,18 +75,12 @@ export type PrismaVersion = {
   engine: string
 }
 
-/**
- * Prisma Client JS version: 6.19.0
- * Query Engine version: 2ba551f319ab1df4bc874a89965d8b3641056773
- */
+
 export const prismaVersion: PrismaVersion = {
   client: "6.19.0",
   engine: "2ba551f319ab1df4bc874a89965d8b3641056773"
 }
 
-/**
- * Utility Types
- */
 
 export type Bytes = runtime.Bytes
 export type JsonObject = runtime.JsonObject
