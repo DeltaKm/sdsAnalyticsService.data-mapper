@@ -5,12 +5,14 @@ const prisma = new PrismaClient();
 type PayloadRow = {
   id?: string | number;
   itemId?: string | number;
+  idArticle?: string | number;
   sku?: string | number;
   code?: string | number;
   name?: string;
   title?: string;
   description?: string;
   category?: string | { title?: string } | null;
+  categories?: Array<string | { title?: string } | null> | null;
   quantity?: number | string;
   price?: number | string;
   unitPrice?: number | string;
@@ -19,16 +21,19 @@ type PayloadRow = {
   amount?: number | string;
 };
 
+type PayloadCategory = string | { title?: string } | null | undefined;
+
 function toNumber(value: unknown): number {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
 function toSku(row: PayloadRow): string {
-  return String(row.id ?? row.itemId ?? row.sku ?? row.code ?? row.name ?? '').trim();
+  const candidate = row.idArticle ?? row.code ?? row.itemId ?? row.sku ?? row.id ?? row.name;
+  return String(candidate ?? '').trim();
 }
 
-function toCategory(category: PayloadRow['category']): string | null {
+function normalizeCategory(category: PayloadCategory): string | null {
   if (!category) return null;
   if (typeof category === 'string') {
     const normalized = category.trim();
@@ -36,6 +41,16 @@ function toCategory(category: PayloadRow['category']): string | null {
   }
   const normalized = String(category.title ?? '').trim();
   return normalized || null;
+}
+
+function toCategory(row: PayloadRow): string | null {
+  const categories = Array.isArray(row.categories) ? row.categories : [];
+  for (let index = categories.length - 1; index >= 0; index -= 1) {
+    const normalized = normalizeCategory(categories[index]);
+    if (normalized) return normalized;
+  }
+
+  return normalizeCategory(row.category);
 }
 
 async function aggregateCatalogRows(params: {
@@ -58,7 +73,7 @@ async function aggregateCatalogRows(params: {
     if (quantity <= 0 && grossAmount <= 0) continue;
 
     const name = String(row.title ?? row.name ?? row.description ?? sku).trim() || sku;
-    const category = toCategory(row.category);
+    const category = toCategory(row);
     const avgPrice = quantity > 0 ? grossAmount / quantity : unitPrice;
 
     const menuItem = await prisma.menuItem.upsert({
